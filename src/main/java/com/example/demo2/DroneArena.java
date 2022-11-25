@@ -2,10 +2,14 @@
 package com.example.demo2;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class DroneArena {
     double xSize, ySize;
+    private ArrayList<EnemyDrone> allEDrones;
     private ArrayList<Drone> allDrones;
+    Random rand = new Random();
+
 
     DroneArena() {
         this(500, 400);
@@ -15,17 +19,25 @@ public class DroneArena {
         xSize = xS;
         ySize = yS;
         allDrones = new ArrayList<Drone>();
-        allDrones.add(new Drone(xS/2, yS/2, 10, 55, 10));
+        allDrones.add(new Drone(rand, rand, 10, 55, 10));
+        allEDrones = new ArrayList<EnemyDrone>();
 
     }
     public void drawArena(MyCanvas mc) {
         for (FirstDrone b : allDrones) b.drawdrone(mc);
     }
+    public void drawArena2(MyCanvas mc) {
+        for (FirstDrone b : allEDrones) b.drawdrone2(mc);
+    }
     public void checkDrones() {
-        for (FirstDrone b : allDrones) b.checkBall(this);
+        for (FirstDrone b : allDrones) b.checkdrone(this);
+    }
+    public void checkDrones2() {
+        for (FirstDrone b : allEDrones) b.checkdrone(this);
     }
     public void AdjustDrone() {
-        for (FirstDrone b : allDrones) b.adjustBall();
+        for (FirstDrone b : allDrones) b.adjustdrone();
+        for (FirstDrone b : allEDrones) b.adjustdrone();
     }
     public ArrayList<String> describeAll() {
         ArrayList<String> ans = new ArrayList<String>();
@@ -39,6 +51,11 @@ public class DroneArena {
         return ans;
     }
     public void addDrone() {
-        allDrones.add(new Drone(xSize/2, ySize/2, 10, 55, 5));
+        allDrones.add(new Drone(rand, rand, 10, 55, 5));
+
+    }
+
+    public void addEDrone() {
+        allEDrones.add(new EnemyDrone(xSize/2, ySize/2, 10, 55, 5));
     }
 }

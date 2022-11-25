@@ -1,13 +1,15 @@
 
 package com.example.demo2;
 
+import java.util.Random;
+
 public abstract class FirstDrone {
     protected double x, y, rad;
 
     static int ballCounter = 0;
 
 
-    FirstDrone() {
+    FirstDrone(Random ix, Random iy, double ir) {
         this(100, 100, 10);
     }
 
@@ -35,6 +37,9 @@ public abstract class FirstDrone {
     public void drawdrone(MyCanvas mc) {
         mc.showdrone(x, y, rad);
     }
+    public void drawdrone2(MyCanvas mc) {
+        mc.showenemydrone(x, y, rad);
+    }
     protected String getStrType() {
         droneid[0]++;
             return "Drone:" + droneid;
@@ -45,9 +50,9 @@ public abstract class FirstDrone {
 
     }
 
-    protected abstract void checkBall(DroneArena b);
+    protected abstract void checkdrone(DroneArena b);
 
-    protected abstract void adjustBall();
+    protected abstract void adjustdrone();
 
     public boolean hitting(double ox, double oy, double or) {
         return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (or+rad)*(or+rad);
