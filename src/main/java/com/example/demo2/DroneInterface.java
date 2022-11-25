@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package com.example.demo2;
 
 import java.util.ArrayList;
@@ -13,12 +11,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -72,6 +65,30 @@ public class DroneInterface extends Application {
         return new HBox(new Label("Start: "), btnStart, btnStop, new Label("Add: "), btnAdd);
     }
 
+/**
+    TextField sizeinputX = new TextField();
+    TextField sizeinputY = new TextField();
+    Button showPopupButton = new Button("Edit Arena, Enter X + Y size ");
+    Label displayLabel = new Label();
+    VBox layout = new VBox(10);
+       // layout.setPadding(new Insets(300, 80, 80, 0));
+    VBox layout2 = new VBox(10);
+        //layout.setPadding(new Insets(350, 80, 80, 0));
+       // layout.getChildren().addAll(sizeinputX,sizeinputY, showPopupButton);
+  //  Stage finalWindow = window;
+       // showPopupButton.setOnAction(actionEvent -> {
+        int savedValue = Integer.parseInt(sizeinputX.getText());
+       int savedValueY = Integer.parseInt(sizeinputY.getText());
+       // gc.setFill(Color.WHITE);
+       // FlowPane pane = new FlowPane(savedValue,savedValueY);
+       // pane.setBorder(new Border(new BorderStroke(Color.BLUEVIOLET, BorderStrokeStyle.DASHED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+       // Group root2 = new Group(canvas,pane,menuBar, savebar, button2, button3, button5);
+      //  Scene scene = new Scene(root2, savedValue, savedValueY, Color.DIMGREY);
+      //  finalWindow.setScene(scene);
+       // finalWindow.show();
+   // });
+
+**/
 
     public void drawWorld () {
         arena.drawArena(mc);
