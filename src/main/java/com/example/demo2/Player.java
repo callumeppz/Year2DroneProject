@@ -1,8 +1,17 @@
 package com.example.demo2;
+public class Player{
+        double DroneAngle, DroneSpeed;
+        public Player(double ix, double iy, double ir, double ia, double is) {
+            DroneAngle = ia;
+            DroneSpeed = is;
+        }
 
-public class Player {
+        //inset WASD controls here
+    // trytomove function
 
-    // insert code here for playable character
-    // moves with WASD buttons
+        protected String getStrType() {
+            return "Player";
+        }
 
-}
+    }
+

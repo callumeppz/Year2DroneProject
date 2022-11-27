@@ -50,12 +50,28 @@ public class DroneArena {
         if (y < rad || y > ySize - rad) ans = -ans;
         return ans;
     }
-    public void addDrone() {
+    public Object addDrone() {
         allDrones.add(new Drone(rand, rand, 10, 55, 5));
 
+        return null;
     }
 
     public void addEDrone() {
         allEDrones.add(new EnemyDrone(xSize/2, ySize/2, 10, 55, 5));
+    }
+
+    public void addplayer() {
+        allEDrones.add(new EnemyDrone(xSize/2, ySize/2, 10, 55, 5));
+    }
+
+
+    public void easymode() {
+            allDrones.add(new Drone(rand, rand, 10, 55, 5));
+        }
+
+    public Drone Hardmode() {
+        for (int i = 0; i < 4; ++i)
+            allEDrones.add(new EnemyDrone(xSize/2, ySize/2, 10, 55, 5));
+        return null;
     }
 }

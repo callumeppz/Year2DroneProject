@@ -58,13 +58,38 @@ public class DroneInterface extends Application {
             public void handle(ActionEvent event) {
                 String toString3 = ("Drone ID %s\t" + droneid[0]);
                 Label V = new Label(toString3);
-                System.out.printf("\tDrone ID: %s" , droneid[0]);
+                System.out.printf("\tDrone ID: %s", droneid[0]);
                 rtPane.getChildren().add(V);
                 droneid[0]++;
                 a.setAlertType(AlertType.INFORMATION);
                 a.setContentText("Drone Added");
                 arena.addDrone();
                 a.show();
+                drawWorld();
+            }
+        });
+
+        Alert c = new Alert(AlertType.NONE);
+        Button btnlv1 = new Button("Easy Mode");
+        btnlv1.setTextFill(Color.GREEN);
+        btnlv1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                for (int i = 0; i < 4; ++i) {
+                    arena.easymode();
+                }
+                drawWorld();
+            }
+        });
+
+        Button btnlv2 = new Button("Hard Mode");
+        btnlv2.setTextFill(Color.RED);
+        btnlv2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                for (int i = 0; i < 4; ++i) {
+                    arena.Hardmode();
+                }
                 drawWorld();
             }
         });
@@ -78,7 +103,7 @@ public class DroneInterface extends Application {
             public void handle(ActionEvent event) {
                 String toString3 = ("Enemy Drone ID %s\t" + Edroneid[0]);
                 Label V = new Label(toString3);
-                System.out.printf("\tEnemy Drone ID: %s" , Edroneid[0]);
+                System.out.printf("\tEnemy Drone ID: %s", Edroneid[0]);
                 rtPane.getChildren().add(V);
                 Edroneid[0]++;
                 E.setAlertType(AlertType.INFORMATION);
@@ -88,7 +113,7 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
-        return new HBox(new Label("Start: "), btnStart, btnStop, new Label("Add: "), btnAdd, btnAddEnemy);
+        return new HBox(new Label("Start: "), btnStart, btnStop, new Label("Add: "), btnAdd, btnAddEnemy, btnlv1, btnlv2);
     }
 
 /**

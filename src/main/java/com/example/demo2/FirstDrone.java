@@ -6,7 +6,6 @@ import java.util.Random;
 public abstract class FirstDrone {
     protected double x, y, rad;
 
-    static int ballCounter = 0;
 
 
     FirstDrone(Random ix, Random iy, double ir) {
@@ -20,17 +19,11 @@ public abstract class FirstDrone {
         final int[] DroneID = {0};
 
     }
-
     public double getX() { return x; }
 
     public double getY() { return y; }
 
     public double getRad() { return rad; }
-
-    public void setXY(double nx, double ny) {
-        x = nx;
-        y = ny;
-    }
 
     public int[] getID() {return droneid; }
     int[] droneid = {0};

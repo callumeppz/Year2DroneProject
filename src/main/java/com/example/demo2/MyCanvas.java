@@ -40,4 +40,14 @@ public class MyCanvas {
         gc.drawImage(droneimg, x-rad, y-rad, 63, 34);
     }
 
+    public void showplayer(double x, double y, double rad) {
+        Image droneimg;
+        try {
+            droneimg = new Image(new FileInputStream("C:\\Users\\callu\\OneDrive\\Documents\\edrone\\edrone.png"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        gc.drawImage(droneimg, x-rad, y-rad, 63, 34);
+    }
+
 }
