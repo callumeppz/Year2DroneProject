@@ -6,6 +6,7 @@ public class Player{
             DroneSpeed = is;
         }
 
+
         //inset WASD controls here
     // trytomove function
 

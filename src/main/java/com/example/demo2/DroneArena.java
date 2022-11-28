@@ -22,6 +22,7 @@ public class DroneArena {
         allDrones.add(new Drone(rand, rand, 10, 55, 10));
         allEDrones = new ArrayList<EnemyDrone>();
 
+
     }
     public void drawArena(MyCanvas mc) {
         for (FirstDrone b : allDrones) b.drawdrone(mc);
@@ -58,16 +59,18 @@ public class DroneArena {
 
     public void addEDrone() {
         allEDrones.add(new EnemyDrone(xSize/2, ySize/2, 10, 55, 5));
+
     }
 
     public void addplayer() {
-        allEDrones.add(new EnemyDrone(xSize/2, ySize/2, 10, 55, 5));
+        //allEDrones.add(new Player(xSize/2, ySize/2, 10, 55, 5));
     }
 
 
     public void easymode() {
-            allDrones.add(new Drone(rand, rand, 10, 55, 5));
+            addDrone();
         }
+
 
     public Drone Hardmode() {
         for (int i = 0; i < 4; ++i)

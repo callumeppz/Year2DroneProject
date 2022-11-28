@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,13 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669583609594</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="attempting to add easy/hard mode buttons, adding functional character soon">
+      <created>1669591964866</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669591964866</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Drone Simulation, different drones need to be added aswell as droneIDs and save/load features" />
     <MESSAGE value="add enemy drone button implemented" />
     <MESSAGE value="new features" />
-    <option name="LAST_COMMIT_MESSAGE" value="new features" />
+    <MESSAGE value="attempting to add easy/hard mode buttons, adding functional character soon" />
+    <option name="LAST_COMMIT_MESSAGE" value="attempting to add easy/hard mode buttons, adding functional character soon" />
   </component>
 </project>

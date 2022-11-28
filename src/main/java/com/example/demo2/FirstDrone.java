@@ -33,6 +33,9 @@ public abstract class FirstDrone {
     public void drawdrone2(MyCanvas mc) {
         mc.showenemydrone(x, y, rad);
     }
+    public void drawdrone3(MyCanvas mc) {
+        mc.showplayer(x, y, rad);
+    }
     protected String getStrType() {
         droneid[0]++;
             return "Drone:" + droneid;

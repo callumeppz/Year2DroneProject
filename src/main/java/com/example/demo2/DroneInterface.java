@@ -75,9 +75,8 @@ public class DroneInterface extends Application {
         btnlv1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                for (int i = 0; i < 4; ++i) {
-                    arena.easymode();
-                }
+                arena.easymode();
+                arena.addEDrone();
                 drawWorld();
             }
         });
@@ -93,6 +92,17 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
+
+        Button btnplr = new Button("Easy Mode");
+        btnplr.setTextFill(Color.GREEN);
+        btnplr.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                drawWorld();
+            }
+        });
+
 
         Alert E = new Alert(AlertType.NONE);
         Button btnAddEnemy = new Button("Add Enemy Drone");
@@ -113,7 +123,33 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
-        return new HBox(new Label("Start: "), btnStart, btnStop, new Label("Add: "), btnAdd, btnAddEnemy, btnlv1, btnlv2);
+        Button button2 = new Button();
+        button2.setText("Exit");
+
+
+        button2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.exit(0);
+            }
+        });
+
+        Menu filemenu = new Menu("File");
+        filemenu.getItems().add(new MenuItem("About"));
+        filemenu.getItems().add(new MenuItem("Help"));
+        MenuBar menuBar = new MenuBar();
+        menuBar.setTranslateX(0);
+        menuBar.setTranslateY(0);
+        menuBar.getMenus().addAll(filemenu);
+
+        Menu savemenu = new Menu("Save");
+        savemenu.getItems().add(new MenuItem("Save Arena"));
+        MenuBar savebar = new MenuBar();
+        savebar.setTranslateX(50);
+        savebar.setTranslateY(0);
+        menuBar.getMenus().addAll(savemenu);
+
+        return new HBox(new Label("Start: "), btnStart, btnStop, new Label("Add: "), btnAdd, btnAddEnemy, btnlv1, btnlv2, menuBar, button2);
     }
 
 /**
