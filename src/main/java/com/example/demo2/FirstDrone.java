@@ -42,7 +42,7 @@ public abstract class FirstDrone {
     }
 
     public String toString() {
-        return getStrType()+" at "+Math.round(x)+", "+Math.round(y);
+        return getStrType()+" at "+Math.round(x)+", "+Math.round(y) + " facing " + Direction.RandomDirec();
 
     }
 
