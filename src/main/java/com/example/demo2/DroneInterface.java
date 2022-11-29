@@ -178,6 +178,9 @@ public class DroneInterface extends Application {
 **/
 
     public void drawWorld () {
+        mc.gc.setFill(Color.WHITE);
+        mc.gc.fillRect(0, 0, 2.5*mc.xCanvasSize, 2.5*mc.yCanvasSize);
+
         arena.drawArena(mc);
 
     }
@@ -199,7 +202,7 @@ public class DroneInterface extends Application {
         BorderPane bp = new BorderPane();
         bp.setPadding(new Insets(10, 20, 10, 20));
         Group root = new Group();
-        Canvas canvas = new Canvas( 1000, 500);
+        Canvas canvas = new Canvas( 900, 500);
         root.getChildren().add( canvas );
         bp.setRight(root);
         mc = new MyCanvas(canvas.getGraphicsContext2D(), 400, 500, BEIGE);

@@ -12,7 +12,7 @@ public class DroneArena {
 
 
     DroneArena() {
-        this(500, 400);
+        this(450, 400);
     }
 
     DroneArena(double xS, double yS){

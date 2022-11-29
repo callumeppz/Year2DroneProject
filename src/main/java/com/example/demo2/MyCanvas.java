@@ -10,8 +10,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class MyCanvas {
-    int xCanvasSize = 512;
-    int yCanvasSize = 512;
+    int xCanvasSize;
+    int yCanvasSize;
     GraphicsContext gc;
 
     public MyCanvas(GraphicsContext g, int xcs, int ycs, Color beige) {
@@ -23,7 +23,7 @@ public class MyCanvas {
     public void showdrone(double x, double y, double rad) {
         Image droneimg;
         try {
-            droneimg = new Image(new FileInputStream("C:\\Users\\callu\\OneDrive\\Documents\\drone\\drone.png"));
+            droneimg = new Image(new FileInputStream("/Users/callumapps/Desktop/drone.png"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -33,7 +33,7 @@ public class MyCanvas {
     public void showenemydrone(double x, double y, double rad) {
         Image droneimg;
         try {
-            droneimg = new Image(new FileInputStream("C:\\Users\\callu\\OneDrive\\Documents\\edrone\\edrone.png"));
+            droneimg = new Image(new FileInputStream("/Users/callumapps/Desktop/drone.png"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +43,7 @@ public class MyCanvas {
     public void showplayer(double x, double y, double rad) {
         Image droneimg;
         try {
-            droneimg = new Image(new FileInputStream("C:\\Users\\callu\\OneDrive\\Documents\\edrone\\edrone.png"));
+            droneimg = new Image(new FileInputStream("/Users/callumapps/Desktop/drone.png"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
