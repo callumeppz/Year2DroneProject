@@ -24,7 +24,16 @@ public class DroneInterface extends Application {
     private VBox rtPane;
     private DroneArena arena;
 
+    public void drawWorld () {
+        mc.gc.setFill(Color.WHITE);
+        mc.gc.fillRect(0, 0, 2.5*mc.xCanvasSize, 2.5*mc.yCanvasSize);
+        arena.drawArena(mc);
+    }
+
+
     private HBox setButtons() {
+
+
         Alert S = new Alert(AlertType.NONE);
         Button btnStart = new Button("Start");
         btnStart.setOnAction(new EventHandler<ActionEvent>() {
@@ -34,6 +43,7 @@ public class DroneInterface extends Application {
                 S.setAlertType(AlertType.INFORMATION);
                 S.setContentText("Drone Animation Started!");
                 S.show();
+                drawWorld();
             }
         });
         Alert P = new Alert(AlertType.NONE);
@@ -152,38 +162,7 @@ public class DroneInterface extends Application {
         return new HBox(new Label("Start: "), btnStart, btnStop, new Label("Add: "), btnAdd, btnAddEnemy, btnlv1, btnlv2, menuBar, button2);
     }
 
-/**
-    TextField sizeinputX = new TextField();
-    TextField sizeinputY = new TextField();
-    Button showPopupButton = new Button("Edit Arena, Enter X + Y size ");
-    Label displayLabel = new Label();
-    VBox layout = new VBox(10);
-       // layout.setPadding(new Insets(300, 80, 80, 0));
-    VBox layout2 = new VBox(10);
-        //layout.setPadding(new Insets(350, 80, 80, 0));
-       // layout.getChildren().addAll(sizeinputX,sizeinputY, showPopupButton);
-  //  Stage finalWindow = window;
-       // showPopupButton.setOnAction(actionEvent -> {
-        int savedValue = Integer.parseInt(sizeinputX.getText());
-       int savedValueY = Integer.parseInt(sizeinputY.getText());
-       // gc.setFill(Color.WHITE);
-       // FlowPane pane = new FlowPane(savedValue,savedValueY);
-       // pane.setBorder(new Border(new BorderStroke(Color.BLUEVIOLET, BorderStrokeStyle.DASHED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-       // Group root2 = new Group(canvas,pane,menuBar, savebar, button2, button3, button5);
-      //  Scene scene = new Scene(root2, savedValue, savedValueY, Color.DIMGREY);
-      //  finalWindow.setScene(scene);
-       // finalWindow.show();
-   // });
 
-**/
-
-    public void drawWorld () {
-        mc.gc.setFill(Color.WHITE);
-        mc.gc.fillRect(0, 0, 2.5*mc.xCanvasSize, 2.5*mc.yCanvasSize);
-
-        arena.drawArena(mc);
-
-    }
     public void drawWorld2 () {
         arena.drawArena2(mc);
 
@@ -198,6 +177,9 @@ public class DroneInterface extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+
+
         primaryStage.setTitle("Drone Simulator");
         BorderPane bp = new BorderPane();
         bp.setPadding(new Insets(10, 20, 10, 20));
@@ -206,8 +188,7 @@ public class DroneInterface extends Application {
         root.getChildren().add( canvas );
         bp.setRight(root);
         mc = new MyCanvas(canvas.getGraphicsContext2D(), 400, 500, BEIGE);
-        arena = new DroneArena(1000, 500);
-        drawWorld();
+        arena = new DroneArena(900, 500);
         drawWorld2();
 
         timer = new AnimationTimer() {
@@ -240,7 +221,18 @@ public class DroneInterface extends Application {
         bp.setTop(menuBar);
         bp.setPadding(new Insets(5, 75, 75, 5));
         bp.setLeft(rtPane);
-        bp.setTop(setButtons());
+
+        Button button2 = new Button();
+        button2.setText("start");
+        button2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                bp.setTop(setButtons());
+                drawWorld();
+            }
+        });
+
+        bp.setTop(button2);
 
         Scene scene = new Scene(bp, 1200, 600, BEIGE);
         bp.prefHeightProperty().bind(scene.heightProperty());

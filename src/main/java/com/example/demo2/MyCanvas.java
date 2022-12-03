@@ -8,6 +8,7 @@ import javafx.scene.text.TextAlignment;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Random;
 
 public class MyCanvas {
     int xCanvasSize;
@@ -18,12 +19,13 @@ public class MyCanvas {
         gc = g;
         xCanvasSize = xcs;
         yCanvasSize = ycs;
+
     }
 
     public void showdrone(double x, double y, double rad) {
         Image droneimg;
         try {
-            droneimg = new Image(new FileInputStream("/Users/callumapps/Desktop/drone.png"));
+            droneimg = new Image(new FileInputStream("C:\\Users\\callu\\OneDrive\\Documents\\drone\\drone.png"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -33,7 +35,7 @@ public class MyCanvas {
     public void showenemydrone(double x, double y, double rad) {
         Image droneimg;
         try {
-            droneimg = new Image(new FileInputStream("/Users/callumapps/Desktop/drone.png"));
+            droneimg = new Image(new FileInputStream("C:\\Users\\callu\\OneDrive\\Documents\\drone\\drone.png"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +45,7 @@ public class MyCanvas {
     public void showplayer(double x, double y, double rad) {
         Image droneimg;
         try {
-            droneimg = new Image(new FileInputStream("/Users/callumapps/Desktop/drone.png"));
+            droneimg = new Image(new FileInputStream("C:\\Users\\callu\\OneDrive\\Documents\\drone\\drone.png"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

@@ -7,7 +7,6 @@ public abstract class FirstDrone {
     protected double x, y, rad;
 
 
-
     FirstDrone(Random ix, Random iy, double ir) {
         this(100, 100, 10);
     }
@@ -19,30 +18,43 @@ public abstract class FirstDrone {
         final int[] DroneID = {0};
 
     }
-    public double getX() { return x; }
 
-    public double getY() { return y; }
+    public double getX() {
+        return x;
+    }
 
-    public double getRad() { return rad; }
+    public double getY() {
+        return y;
+    }
 
-    public int[] getID() {return droneid; }
-    int[] droneid = {0};
+    public double getRad() {
+        return rad;
+    }
+
+    public int[] getID() {
+        return droneid;
+    }
+    public static int[] droneid = {0};
+
     public void drawdrone(MyCanvas mc) {
         mc.showdrone(x, y, rad);
     }
+
     public void drawdrone2(MyCanvas mc) {
         mc.showenemydrone(x, y, rad);
     }
+
     public void drawdrone3(MyCanvas mc) {
         mc.showplayer(x, y, rad);
     }
+
     protected String getStrType() {
         droneid[0]++;
-            return "Drone:" + droneid;
+        return "Drone:" + droneid;
     }
 
-   public String toString() {
-    return getStrType()+" at "+Math.round(x)+", "+Math.round(y) + " facing " + Direction.RandomDirec();
+    public String toString() {
+        return getStrType() + " at " + Math.round(x) + ", " + Math.round(y) + " facing " + Direction.RandomDirec();
 
     }
 
@@ -50,12 +62,7 @@ public abstract class FirstDrone {
 
     protected abstract void adjustdrone();
 
-    public boolean hitting(double ox, double oy, double or) {
-        return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (or+rad)*(or+rad);
-    }
 
 
-    public boolean hitting (FirstDrone oFirstDrone) {
-        return hitting(oFirstDrone.getX(), oFirstDrone.getY(), oFirstDrone.getRad());
-    }
+
 }
