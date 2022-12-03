@@ -14,7 +14,7 @@ public class DroneArena {
         xSize = xS;
         ySize = yS;
         allDrones = new ArrayList<Drone>();
-        allDrones.add(new Drone(rand, rand, 10, 55, 10));
+        allDrones.add(new Drone(rand.nextInt(700), rand.nextInt(400), 10, 55, 10));
         allEDrones = new ArrayList<EnemyDrone>();
     }
 
@@ -53,13 +53,13 @@ public class DroneArena {
     }
 
     public Object addDrone() {
-        allDrones.add(new Drone(rand, rand, 10, 55, 5));
+        allDrones.add(new Drone(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
 
         return null;
     }
 
     public void addEDrone() {
-        allEDrones.add(new EnemyDrone(xSize / 2, ySize / 2, 10, 55, 5));
+        allEDrones.add(new EnemyDrone(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
 
     }
 

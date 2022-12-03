@@ -62,7 +62,7 @@ public class DroneInterface extends Application {
         Alert a = new Alert(AlertType.NONE);
         Button btnAdd = new Button("Add Drone");
         btnAdd.setTextFill(Color.BLUEVIOLET);
-        final int[] droneid = {0};
+        final int[] droneid = {1};
         btnAdd.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -74,7 +74,6 @@ public class DroneInterface extends Application {
                 a.setAlertType(AlertType.INFORMATION);
                 a.setContentText("Drone Added");
                 arena.addDrone();
-                a.show();
                 drawWorld();
             }
         });
@@ -115,7 +114,7 @@ public class DroneInterface extends Application {
 
 
         Alert E = new Alert(AlertType.NONE);
-        Button btnAddEnemy = new Button("Add Enemy Drone");
+        Button btnAddEnemy = new Button("Add Obstacle");
         btnAddEnemy.setTextFill(Color.RED);
         final int[] Edroneid = {0};
         btnAddEnemy.setOnAction(new EventHandler<ActionEvent>() {
@@ -229,6 +228,7 @@ public class DroneInterface extends Application {
             public void handle(ActionEvent actionEvent) {
                 bp.setTop(setButtons());
                 drawWorld();
+                drawWorld2();
             }
         });
 

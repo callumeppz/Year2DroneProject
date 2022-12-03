@@ -7,7 +7,7 @@ public abstract class FirstDrone {
     protected double x, y, rad;
 
 
-    FirstDrone(Random ix, Random iy, double ir) {
+    FirstDrone(int ix, Random iy, double ir) {
         this(100, 100, 10);
     }
 
@@ -54,7 +54,7 @@ public abstract class FirstDrone {
     }
 
     public String toString() {
-        return getStrType() + " at " + Math.round(x) + ", " + Math.round(y) + " facing " + Direction.RandomDirec();
+        return getStrType()  + " at " + Math.round(x) + ", " + Math.round(y) + " facing " + Direction.RandomDirec();
 
     }
 

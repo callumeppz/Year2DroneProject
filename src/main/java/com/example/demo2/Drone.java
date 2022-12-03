@@ -2,11 +2,9 @@
 package com.example.demo2;
 
 
-import java.util.Random;
-
 public class Drone extends FirstDrone {
     double DroneAngle, DroneSpeed;
-    public Drone(Random ix, Random iy, double ir, double ia, double is) {
+    public Drone(int ix, int iy, double ir, double ia, double is) {
         super(ix, iy, ir);
         DroneAngle = ia;
         DroneSpeed = is;
