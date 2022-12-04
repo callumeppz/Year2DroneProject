@@ -1,5 +1,6 @@
 package com.example.demo2;
 
+import java.security.cert.X509CertSelector;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -200,24 +201,26 @@ public class DroneInterface extends Application {
                 drawStatus();
             }
         };
-
+        Alert X = new Alert(AlertType.NONE);
         Menu filemenu = new Menu("File");
-        filemenu.getItems().add(new MenuItem("New Arena"));
-        filemenu.getItems().add(new MenuItem("Add Drone"));
-        filemenu.getItems().add(new MenuItem("Display Drone locations"));
-        MenuBar menuBar = new MenuBar();
-        menuBar.setTranslateX(0);
-        menuBar.setTranslateY(0);
-        menuBar.getMenus().addAll(filemenu);
+        MenuItem About = new MenuItem("About");
+        About.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                X.setAlertType(AlertType.INFORMATION);
+                X.setContentText("Drone Simulation made by Callum Apps (30010641)");
+                X.show();
+            }
+        });
+        filemenu.getItems().addAll(About);
 
+        MenuBar menuBar = new MenuBar();
         Menu savemenu = new Menu("Save");
         savemenu.getItems().add(new MenuItem("Save Arena"));
-        MenuBar savebar = new MenuBar();
-        savebar.setTranslateX(50);
-        savebar.setTranslateY(0);
-        menuBar.getMenus().addAll(savemenu);
+
+        menuBar.getMenus().addAll(savemenu, filemenu);
         rtPane = new VBox();
-        bp.setTop(menuBar);
+        bp.setBottom(menuBar);
         bp.setPadding(new Insets(5, 75, 75, 5));
         bp.setLeft(rtPane);
 

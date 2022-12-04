@@ -52,6 +52,18 @@ public class DroneArena {
         return ans;
     }
 
+    /**public double Checkhitting(double x, double y, double rad, double ang, int[] notID) {
+     double ans = ang;
+     if (Drone.getId() != notID && Drone.hitting(x, y)) {
+     ang = 180 * Math.atan2(y - Drone.y, x - Drone.x) / Math.PI;
+     }
+     if (EnemyDrone.getId() != notID && EnemyDrone.hitting(x, y)) {
+     ang = 180 * Math.atan2(y - EnemyDrone.y, x - EnemyDrone.x) / Math.PI;
+     }
+     return ans;
+     }
+     **/
+
     public Object addDrone() {
         allDrones.add(new Drone(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
 
@@ -72,4 +84,5 @@ public class DroneArena {
             allEDrones.add(new EnemyDrone(xSize / 2, ySize / 2, 10, 55, 5));
         return null;
     }
-}
+
+    }

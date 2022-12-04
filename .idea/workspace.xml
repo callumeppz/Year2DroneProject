@@ -9,9 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/EnemyDrone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/EnemyDrone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +62,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670109129022</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added obstacle process of removing EnemyDrone">
+      <created>1670111535204</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670111535204</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -82,6 +86,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="some light fixes, need to work on collisions" />
-    <option name="LAST_COMMIT_MESSAGE" value="some light fixes, need to work on collisions" />
+    <MESSAGE value="added obstacle process of removing EnemyDrone" />
+    <option name="LAST_COMMIT_MESSAGE" value="added obstacle process of removing EnemyDrone" />
   </component>
 </project>

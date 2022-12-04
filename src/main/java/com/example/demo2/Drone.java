@@ -9,6 +9,11 @@ public class Drone extends FirstDrone {
         DroneAngle = ia;
         DroneSpeed = is;
     }
+
+    public static Object droneid() {
+        return null;
+    }
+
     @Override
     protected void checkdrone(DroneArena b) {
         DroneAngle = b.CheckBallAngle(x, y, rad, DroneAngle, droneid);
