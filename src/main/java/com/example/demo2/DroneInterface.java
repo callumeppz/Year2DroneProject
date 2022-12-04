@@ -12,9 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import static javafx.scene.paint.Color.BEIGE;
@@ -26,7 +25,7 @@ public class DroneInterface extends Application {
     private DroneArena arena;
 
     public void drawWorld () {
-        mc.gc.setFill(Color.WHITE);
+        mc.gc.setFill(Color.FORESTGREEN);
         mc.gc.fillRect(0, 0, 2.5*mc.xCanvasSize, 2.5*mc.yCanvasSize);
         arena.drawArena(mc);
     }
@@ -91,17 +90,6 @@ public class DroneInterface extends Application {
             }
         });
 
-        Button btnlv2 = new Button("Hard Mode");
-        btnlv2.setTextFill(Color.RED);
-        btnlv2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                for (int i = 0; i < 4; ++i) {
-                    arena.Hardmode();
-                }
-                drawWorld();
-            }
-        });
 
         Button btnplr = new Button("Easy Mode");
         btnplr.setTextFill(Color.GREEN);
@@ -159,7 +147,7 @@ public class DroneInterface extends Application {
         savebar.setTranslateY(0);
         menuBar.getMenus().addAll(savemenu);
 
-        return new HBox(new Label("Start: "), btnStart, btnStop, new Label("Add: "), btnAdd, btnAddEnemy, btnlv1, btnlv2, menuBar, button2);
+        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2);
     }
 
 
@@ -220,7 +208,7 @@ public class DroneInterface extends Application {
 
         menuBar.getMenus().addAll(savemenu, filemenu);
         rtPane = new VBox();
-        bp.setBottom(menuBar);
+        bp.setTop(menuBar);
         bp.setPadding(new Insets(5, 75, 75, 5));
         bp.setLeft(rtPane);
 
@@ -229,13 +217,23 @@ public class DroneInterface extends Application {
         button2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                bp.setTop(setButtons());
+                bp.setBottom(setButtons());
+                bp.setBackground(Background.fill(Color.WHITE));
                 drawWorld();
                 drawWorld2();
             }
         });
+        Button button3 = new Button();
+        button3.setText("Exit");
+        button3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.exit(0);
+            }
+        });
+        Group buttons = new Group(button2);
+        bp.setBottom(buttons);
 
-        bp.setTop(button2);
 
         Scene scene = new Scene(bp, 1200, 600, BEIGE);
         bp.prefHeightProperty().bind(scene.heightProperty());
