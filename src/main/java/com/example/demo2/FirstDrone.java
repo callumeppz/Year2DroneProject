@@ -23,21 +23,6 @@ public abstract class FirstDrone {
 
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public double getRad() {
-        return rad;
-    }
-
-    public int[] getID() {
-        return droneid;
-    }
     public static int[] droneid = {0};
 
     public void drawdrone(MyCanvas mc) {
@@ -46,10 +31,6 @@ public abstract class FirstDrone {
 
     public void drawdrone2(MyCanvas mc) {
         mc.showenemydrone(x, y, rad);
-    }
-
-    public void drawdrone3(MyCanvas mc) {
-        mc.showplayer(x, y, rad);
     }
 
     protected String getStrType() {
@@ -61,21 +42,14 @@ public abstract class FirstDrone {
         return getStrType()  + " at " + Math.round(x) + ", " + Math.round(y) + " facing " + Direction.RandomDirec();
 
     }
-
-
     protected abstract void checkdrone(DroneArena b);
 
     protected abstract void adjustdrone();
 
 
-
     public boolean hitting(double ox, double oy, double or, int i) {
-        return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (or+rad)*(or+rad);
+        return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (or/2+i/2)*(or/2+i/2);
     }
-    public boolean hitting (FirstDrone Drone) {
-        return hitting(Drone.getX(), Drone.getY(), Drone.getRad(), 34);
-    }
-
 }
 
 

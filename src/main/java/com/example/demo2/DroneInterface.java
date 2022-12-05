@@ -78,14 +78,15 @@ public class DroneInterface extends Application {
             }
         });
 
-        Button btnplr = new Button("Easy Mode");
+        Button btnplr = new Button("Clear Arena");
         btnplr.setTextFill(Color.GREEN);
         btnplr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                for (Drone allDrone : arena.allDrones) {
+                    arena.allDrones.clear();
                 drawWorld();
-            }
+            }}
         });
 
 
@@ -134,7 +135,7 @@ public class DroneInterface extends Application {
         savebar.setTranslateY(0);
         menuBar.getMenus().addAll(savemenu);
 
-        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2);
+        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnplr);
     }
 
 

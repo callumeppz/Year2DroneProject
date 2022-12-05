@@ -2,12 +2,13 @@
 package com.example.demo2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class DroneArena {
     double xSize, ySize;
     private ArrayList<EnemyDrone> allEDrones;
-    private ArrayList<Drone> allDrones;
+    public ArrayList<Drone> allDrones;
     Random rand = new Random();
 
     DroneArena(double xS, double yS) {
@@ -36,6 +37,8 @@ public class DroneArena {
         for (FirstDrone Drone : allDrones) Drone.checkdrone(this);
     }
 
+
+
     public ArrayList<String> describeAll() {
         ArrayList<String> ans = new ArrayList<String>();
         for (FirstDrone b : allDrones) ans.add(b.toString());
@@ -50,17 +53,17 @@ public class DroneArena {
 
     }
     public double checkDroneAngle(double x, double y, double rad, double ang) {
-        double ans= ang;
+        double ans = ang;
         if (allDrones.size() >= 5)
         {
             for (Drone Drone1 : allDrones)
             {
                 for (Drone Drone2: allDrones) {
                     if (Drone1==Drone2 && Drone1.hitting(x, y, 63, 34)) {
-                        ang = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
+                        ang = 180 * Math.atan2(y - Drone1.y, x - Drone2.x) / Math.PI;
                     }
-                    if (Drone2==Drone1 && Drone2.hitting(x, y, 64, 34)) {
-                        ang = 180 * Math.atan2(y - Drone2.y, x - Drone2.x) / Math.PI;
+                    if (Drone1==Drone2 && Drone2.hitting(x, y, 63, 34)) {
+                        ang = 180 * Math.atan2(y - Drone2.y, x - Drone1.x) / Math.PI;
                     }
                 }
             }
