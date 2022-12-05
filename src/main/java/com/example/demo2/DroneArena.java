@@ -51,7 +51,7 @@ public class DroneArena {
     }
     public double checkDroneAngle(double x, double y, double rad, double ang) {
         double ans= ang;
-        if (allDrones.size() >= 2)
+        if (allDrones.size() >= 5)
         {
             for (Drone Drone1 : allDrones)
             {
