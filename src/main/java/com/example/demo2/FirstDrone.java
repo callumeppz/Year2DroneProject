@@ -62,7 +62,13 @@ public abstract class FirstDrone {
 
     protected abstract void adjustdrone();
 
-
-
+    public boolean hitting(double ox, double oy, double or) {
+        return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (or+rad)*(or+rad);
+    }
+    public boolean hitting (FirstDrone Drone) {
+        return hitting(Drone.getX(), Drone.getY(), Drone.getRad());
+    }
 
 }
+
+

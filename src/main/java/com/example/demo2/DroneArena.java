@@ -74,15 +74,15 @@ public class DroneArena {
         allEDrones.add(new EnemyDrone(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
 
     }
-
     public void easymode() {
         addDrone();
     }
 
-    public Drone Hardmode() {
-        for (int i = 0; i < 4; ++i)
-            allEDrones.add(new EnemyDrone(xSize / 2, ySize / 2, 10, 55, 5));
-        return null;
+    public boolean checkHit(FirstDrone Drone) {
+        boolean ans = false;
+        for (FirstDrone b : allDrones)
+            if (b instanceof Drone && b.hitting(Drone)) ans = true;
+        return ans;
     }
 
     }
