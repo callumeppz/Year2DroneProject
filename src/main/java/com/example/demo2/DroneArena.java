@@ -26,17 +26,14 @@ public class DroneArena {
         for (FirstDrone b : allEDrones) b.drawdrone2(mc);
     }
 
-    public void checkDrones() {
-        for (FirstDrone b : allDrones) b.checkdrone(this);
-    }
-
-    public void checkDrones2() {
-        for (FirstDrone b : allEDrones) b.checkdrone(this);
-    }
 
     public void AdjustDrone() {
-        for (FirstDrone b : allDrones) b.adjustdrone();
-        for (FirstDrone b : allEDrones) b.adjustdrone();
+        for (FirstDrone b : allDrones) {
+            b.adjustdrone();
+        }
+        }
+    public void checkDrones() {
+        for (FirstDrone Drone : allDrones) Drone.checkdrone(this);
     }
 
     public ArrayList<String> describeAll() {
@@ -44,45 +41,40 @@ public class DroneArena {
         for (FirstDrone b : allDrones) ans.add(b.toString());
         return ans;
     }
-
-    public double CheckBallAngle(double x, double y, double rad, double ang, int[] notID) {
-        double ans = ang;
-        if (x < rad || x > xSize - rad) ans = 180 - ans;
-        if (y < rad || y > ySize - rad) ans = -ans;
-        return ans;
-    }
-
-    /**public double Checkhitting(double x, double y, double rad, double ang, int[] notID) {
-     double ans = ang;
-     if (Drone.getId() != notID && Drone.hitting(x, y)) {
-     ang = 180 * Math.atan2(y - Drone.y, x - Drone.x) / Math.PI;
-     }
-     if (EnemyDrone.getId() != notID && EnemyDrone.hitting(x, y)) {
-     ang = 180 * Math.atan2(y - EnemyDrone.y, x - EnemyDrone.x) / Math.PI;
-     }
-     return ans;
-     }
-     **/
-
     public Object addDrone() {
         allDrones.add(new Drone(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
-
         return null;
     }
-
     public void addEDrone() {
         allEDrones.add(new EnemyDrone(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
 
     }
-    public void easymode() {
-        addDrone();
-    }
+    public double checkDroneAngle(double x, double y, double rad, double ang) {
+        double ans= ang;
+        if (allDrones.size() >= 2)
+        {
+            for (Drone Drone1 : allDrones)
+            {
+                for (Drone Drone2: allDrones) {
+                    if (Drone1==Drone2 && Drone1.hitting(x, y, 63, 34)) {
+                        ang = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
+                    }
+                    if (Drone2==Drone1 && Drone2.hitting(x, y, 64, 34)) {
+                        ang = 180 * Math.atan2(y - Drone2.y, x - Drone2.x) / Math.PI;
+                    }
+                }
+            }
+        }
+        if (x > xSize - rad || x < rad) {
+            ang = 180 - ang;
+        }
 
-    public boolean checkHit(FirstDrone Drone) {
-        boolean ans = false;
-        for (FirstDrone b : allDrones)
-            if (b instanceof Drone && b.hitting(Drone)) ans = true;
-        return ans;
-    }
+        if (y > ySize - rad || y < rad ) {
+            ang = -ang;
+        }
+        return ang;
 
     }
+}
+
+

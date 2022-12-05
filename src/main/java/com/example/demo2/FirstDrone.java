@@ -4,8 +4,11 @@ package com.example.demo2;
 import java.util.Random;
 
 public abstract class FirstDrone {
-    protected double x, y, rad;
-
+    public double x, y, rad;
+    double DroneAngle = 5;
+    int DroneSpeed = 5;
+    int height = 63;
+    int Width = 63;
 
     FirstDrone(int ix, Random iy, double ir) {
         this(100, 100, 10);
@@ -16,6 +19,7 @@ public abstract class FirstDrone {
         y = iy;
         rad = ir;
         final int[] DroneID = {0};
+
 
     }
 
@@ -58,17 +62,21 @@ public abstract class FirstDrone {
 
     }
 
+
     protected abstract void checkdrone(DroneArena b);
 
     protected abstract void adjustdrone();
 
-    public boolean hitting(double ox, double oy, double or) {
+
+
+    public boolean hitting(double ox, double oy, double or, int i) {
         return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (or+rad)*(or+rad);
     }
     public boolean hitting (FirstDrone Drone) {
-        return hitting(Drone.getX(), Drone.getY(), Drone.getRad());
+        return hitting(Drone.getX(), Drone.getY(), Drone.getRad(), 34);
     }
 
 }
+
 
 

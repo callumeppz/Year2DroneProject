@@ -78,19 +78,6 @@ public class DroneInterface extends Application {
             }
         });
 
-        Alert c = new Alert(AlertType.NONE);
-        Button btnlv1 = new Button("Easy Mode");
-        btnlv1.setTextFill(Color.GREEN);
-        btnlv1.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                arena.easymode();
-                arena.addEDrone();
-                drawWorld();
-            }
-        });
-
-
         Button btnplr = new Button("Easy Mode");
         btnplr.setTextFill(Color.GREEN);
         btnplr.setOnAction(new EventHandler<ActionEvent>() {
@@ -166,8 +153,6 @@ public class DroneInterface extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-
-
         primaryStage.setTitle("Drone Simulator");
         BorderPane bp = new BorderPane();
         bp.setPadding(new Insets(10, 20, 10, 20));
@@ -177,15 +162,12 @@ public class DroneInterface extends Application {
         bp.setRight(root);
         mc = new MyCanvas(canvas.getGraphicsContext2D(), 400, 500, BEIGE);
         arena = new DroneArena(900, 500);
-        drawWorld2();
 
         timer = new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 arena.checkDrones();
-                arena.checkDrones2();
                 arena.AdjustDrone();
                 drawWorld();
-                drawWorld2();
                 drawStatus();
             }
         };

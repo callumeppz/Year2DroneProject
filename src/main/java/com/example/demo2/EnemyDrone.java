@@ -9,16 +9,18 @@ public class EnemyDrone extends FirstDrone {
         DroneAngle = ia;
         DroneSpeed = is;
     }
-    @Override
-    protected void checkdrone(DroneArena b) {
 
-    }
     @Override
     protected void adjustdrone() {
 
     }
     protected String getStrType() {
         return "Drone";
+    }
+
+    @Override
+    protected void checkdrone(DroneArena b) {
+
     }
 
 }

@@ -8,22 +8,24 @@ public class Drone extends FirstDrone {
         super(ix, iy, ir);
         DroneAngle = ia;
         DroneSpeed = is;
+        int height = 63;
+        int Width = 63;
     }
 
-    public static Object droneid() {
-        return null;
-    }
-
-    @Override
-    protected void checkdrone(DroneArena b) {
-        DroneAngle = b.CheckBallAngle(x, y, rad, DroneAngle, droneid);
-    }
-    @Override
-    protected void adjustdrone() {
+    public void adjustdrone() {
         double radAngle = DroneAngle*Math.PI/180;
         x += DroneSpeed * Math.cos(radAngle);
         y += DroneSpeed * Math.sin(radAngle);
     }
+    protected void checkdrone(DroneArena b) {
+        DroneAngle = b.checkDroneAngle(x, y, rad, DroneAngle);
+    }
+    public boolean hitting(double ox, double oy, double or, int i) {
+        return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (or+rad)*(or+rad);
+    }
+
+
+
     protected String getStrType() {
         return "Drone";
     }
