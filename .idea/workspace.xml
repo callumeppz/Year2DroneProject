@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99ddc99c-1df5-4315-be93-e1b53f94355c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dronegui_final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dronegui_final.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
