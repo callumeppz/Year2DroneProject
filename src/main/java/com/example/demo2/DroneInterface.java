@@ -112,10 +112,6 @@ public class DroneInterface extends Application {
         btnAddE.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String toString3 = ("Enemy Drone ID %s\t" + Edroneid[0]);
-                Label V = new Label(toString3);
-                System.out.printf("\tEnemy Drone ID: %s", Edroneid[0]);
-                rtPane.getChildren().add(V);
                 Edroneid[0]++;
                 arena.addEDrone();
                 drawWorld();

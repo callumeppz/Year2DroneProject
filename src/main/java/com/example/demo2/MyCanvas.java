@@ -25,7 +25,7 @@ public class MyCanvas {
     public void showdrone(double x, double y, double rad) {
         Image droneimg;
         try {
-            droneimg = new Image(new FileInputStream("C:\\Users\\callu\\OneDrive\\Documents\\drone\\drone.png"));
+            droneimg = new Image(new FileInputStream("src/main/resources/drone.png"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

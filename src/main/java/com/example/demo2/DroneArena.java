@@ -49,8 +49,11 @@ public class DroneArena {
     }
     public void addEDrone() {
         allEDrones.add(new EnemyDrone(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
-
     }
+    public void addEnemyDrone() {
+        allEDrones.add(new EnemyDrone(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
+    }
+
     public double checkDroneAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
         double ans = ang;
         if (allDrones.size() >= 1) {
