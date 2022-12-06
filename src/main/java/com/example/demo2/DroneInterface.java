@@ -1,5 +1,6 @@
 package com.example.demo2;
 
+import java.io.*;
 import java.security.cert.X509CertSelector;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
@@ -10,12 +11,15 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.paint.*;
 import javafx.stage.Stage;
+
+import static javafx.scene.paint.Color.*;
 import static javafx.scene.paint.Color.BEIGE;
 
 public class DroneInterface extends Application {
@@ -25,17 +29,17 @@ public class DroneInterface extends Application {
     private DroneArena arena;
 
     public void drawWorld () {
-        mc.gc.setFill(Color.FORESTGREEN);
+        Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, BLUE)};
+        LinearGradient lngnt = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
+        mc.gc.setFill(lngnt);
         mc.gc.fillRect(0, 0, 2.5*mc.xCanvasSize, 2.5*mc.yCanvasSize);
         arena.drawArena(mc);
+        arena.drawArena2(mc);
     }
-
-
     private HBox setButtons() {
 
-
         Alert S = new Alert(AlertType.NONE);
-        Button btnStart = new Button("Start");
+        Button btnStart = new Button("Start"); // begins and displays a message
         btnStart.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -46,10 +50,9 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
-        Alert P = new Alert(AlertType.NONE);
-        btnStart.setTextFill(Color.BLUEVIOLET);
+
+        Alert P = new Alert(AlertType.NONE); // pauses
         Button btnStop = new Button("Pause");
-        btnStop.setTextFill(Color.BLUEVIOLET);
         btnStop.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -59,9 +62,9 @@ public class DroneInterface extends Application {
                 P.show();
             }
         });
-        Alert a = new Alert(AlertType.NONE);
+
+        Alert a = new Alert(AlertType.NONE); // button to add a drone
         Button btnAdd = new Button("Add Drone");
-        btnAdd.setTextFill(Color.BLUEVIOLET);
         final int[] droneid = {1};
         btnAdd.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -78,8 +81,7 @@ public class DroneInterface extends Application {
             }
         });
 
-       /** Button btnplr = new Button("Clear Drones");
-        btnplr.setTextFill(Color.GREEN);
+      Button btnplr = new Button("Clear Drones"); // clears the arena
         btnplr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -87,10 +89,10 @@ public class DroneInterface extends Application {
                     arena.allDrones.clear();
                 drawWorld();
             }}
-        });**/
-        Alert E = new Alert(AlertType.NONE);
+        });
+
+        Alert E = new Alert(AlertType.NONE); // add obstacle button, collisions need working on
         Button btnAddEnemy = new Button("Add Obstacle");
-        btnAddEnemy.setTextFill(Color.RED);
         final int[] Edroneid = {0};
         btnAddEnemy.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -100,47 +102,46 @@ public class DroneInterface extends Application {
                 System.out.printf("\tEnemy Drone ID: %s", Edroneid[0]);
                 rtPane.getChildren().add(V);
                 Edroneid[0]++;
-                E.setAlertType(AlertType.INFORMATION);
-                E.setContentText("Enemy Drone Added");
                 arena.addEDrone();
-                E.show();
                 drawWorld();
             }
         });
-        Button button2 = new Button();
+
+        Button btnAddE = new Button("Add Obstacle");
+
+        btnAddE.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String toString3 = ("Enemy Drone ID %s\t" + Edroneid[0]);
+                Label V = new Label(toString3);
+                System.out.printf("\tEnemy Drone ID: %s", Edroneid[0]);
+                rtPane.getChildren().add(V);
+                Edroneid[0]++;
+                arena.addEDrone();
+                drawWorld();
+            }
+        });
+
+        Button button2 = new Button(); // exit button
         button2.setText("Exit");
-
-
         button2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.exit(0);
-            }
+            } // exits
         });
 
-        Menu filemenu = new Menu("File");
-        filemenu.getItems().add(new MenuItem("About"));
-        filemenu.getItems().add(new MenuItem("Help"));
-        MenuBar menuBar = new MenuBar();
-        menuBar.setTranslateX(0);
-        menuBar.setTranslateY(0);
-        menuBar.getMenus().addAll(filemenu);
+        btnStart.setTextFill(PURPLE); //setting the button colours
+        btnStop.setTextFill(PURPLE);
+        btnStop.setTextFill(PURPLE);
+        btnAdd.setTextFill(PURPLE);
+        btnplr.setTextFill(PURPLE);
+        btnAddEnemy.setTextFill(PURPLE);
+        button2.setTextFill(PURPLE);
 
-        Menu savemenu = new Menu("Save");
-        savemenu.getItems().add(new MenuItem("Save Arena"));
-        MenuBar savebar = new MenuBar();
-        savebar.setTranslateX(50);
-        savebar.setTranslateY(0);
-        menuBar.getMenus().addAll(savemenu);
-
-        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2);
+        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnplr); // returns the buttons to the canvas
     }
 
-
-    public void drawWorld2 () {
-        arena.drawArena2(mc);
-
-    }
     public void drawStatus() {
         rtPane.getChildren().clear();
         ArrayList<String> allBs = arena.describeAll();
@@ -149,12 +150,13 @@ public class DroneInterface extends Application {
             rtPane.getChildren().add(l);
         }
     }
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+
+
+     @Override
+    public void start(Stage primaryStage) throws Exception { // main loop
 
         primaryStage.setTitle("Drone Simulator");
         BorderPane bp = new BorderPane();
-        bp.setPadding(new Insets(10, 20, 10, 20));
         Group root = new Group();
         Canvas canvas = new Canvas( 900, 500);
         root.getChildren().add( canvas );
@@ -163,13 +165,14 @@ public class DroneInterface extends Application {
         arena = new DroneArena(900, 500);
 
         timer = new AnimationTimer() {
-            public void handle(long currentNanoTime) {
+            public void handle(long currentNanoTime) { // timer
                 arena.checkDrones();
                 arena.AdjustDrone();
                 drawWorld();
                 drawStatus();
             }
         };
+
         Alert X = new Alert(AlertType.NONE);
         Menu filemenu = new Menu("File");
         MenuItem About = new MenuItem("About");
@@ -181,13 +184,50 @@ public class DroneInterface extends Application {
                 X.show();
             }
         });
-        filemenu.getItems().addAll(About);
 
         MenuBar menuBar = new MenuBar();
-        Menu savemenu = new Menu("Save");
-        savemenu.getItems().add(new MenuItem("Save Arena"));
+            Menu savemenu = new Menu("Save");
+            savemenu.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    ResourceManager.export();
+                }
+            });
 
-        menuBar.getMenus().addAll(savemenu, filemenu);
+            MenuItem mExport = new MenuItem("Export");
+            mExport.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                }
+            });
+
+            MenuItem mImg = new MenuItem("Screen Image");
+            mImg.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    ResourceManager.export();
+                }
+            });
+
+        menuBar.getMenus().addAll(filemenu);
+        filemenu.getItems().addAll(About, mExport, mImg);
+
+            Menu mTest = new Menu("Save/Load");
+
+            MenuItem mTest1 = new MenuItem("Save");
+            mExport.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    ResourceManager.export();
+                }
+            });
+            MenuItem mTest2 = new MenuItem("Load");
+            mExport.setOnAction(actionEvent -> {ResourceManager.importGame();
+            });
+
+            mTest.getItems().addAll(mTest1, mTest2);
+            menuBar.getMenus().addAll(filemenu, mTest);
+
         rtPane = new VBox();
         bp.setTop(menuBar);
         bp.setPadding(new Insets(5, 75, 75, 5));
@@ -198,25 +238,17 @@ public class DroneInterface extends Application {
         button2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, ORANGE)};
+                LinearGradient lngnt = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
                 bp.setBottom(setButtons());
-                bp.setBackground(Background.fill(Color.WHITE));
+                bp.setBackground(Background.fill(LIGHTGREY));
                 drawWorld();
-                drawWorld2();
             }
         });
-        Button button3 = new Button();
-        button3.setText("Exit");
-        button3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.exit(0);
-            }
-        });
+
         Group buttons = new Group(button2);
         bp.setBottom(buttons);
-
-
-        Scene scene = new Scene(bp, 1200, 600, BEIGE);
+        Scene scene = new Scene(bp, 1200, 600);
         bp.prefHeightProperty().bind(scene.heightProperty());
         bp.prefWidthProperty().bind(scene.widthProperty());
         primaryStage.setScene(scene);
@@ -225,7 +257,5 @@ public class DroneInterface extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);			// launch the GUI
-
     }
-
 }

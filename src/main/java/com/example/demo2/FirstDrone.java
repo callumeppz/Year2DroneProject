@@ -1,6 +1,9 @@
 
 package com.example.demo2;
 
+import javafx.scene.control.Label;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class FirstDrone {
@@ -18,12 +21,10 @@ public abstract class FirstDrone {
         x = ix;
         y = iy;
         rad = ir;
-        final int[] DroneID = {0};
-
 
     }
 
-    public static int[] droneid = {0};
+    final int[] droneid = {1};
 
     public void drawdrone(MyCanvas mc) {
         mc.showdrone(x, y, rad);
@@ -33,13 +34,13 @@ public abstract class FirstDrone {
         mc.showenemydrone(x, y, rad);
     }
 
-    protected String getStrType() {
-        droneid[0]++;
-        return "Drone:" + droneid;
-    }
 
     public String toString() {
-        return getStrType()  + " at " + Math.round(x) + ", " + Math.round(y) + " facing " + Direction.RandomDirec();
+        String toString3 = ("Drone ID:\t" + droneid);
+        Label V = new Label(toString3);
+        droneid[0]++;
+        return toString3 + " at " + Math.round(x) + ", " + Math.round(y);
+
 
     }
     protected abstract void checkdrone(DroneArena b);

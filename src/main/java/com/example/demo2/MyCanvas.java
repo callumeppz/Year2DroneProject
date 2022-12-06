@@ -25,7 +25,7 @@ public class MyCanvas {
     public void showdrone(double x, double y, double rad) {
         Image droneimg;
         try {
-            droneimg = new Image(new FileInputStream("/Users/callumapps/Desktop/drone.png"));
+            droneimg = new Image(new FileInputStream("C:\\Users\\callu\\OneDrive\\Documents\\drone\\drone.png"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -34,7 +34,7 @@ public class MyCanvas {
 
     public void showenemydrone(double x, double y, double rad) {
         gc.setFill(Color.BLACK);
-        gc.fillArc(x-rad, y-rad, rad*2, rad*2, 0, 360, ArcType.ROUND);
+        gc.fillArc(x-rad, y-rad, 100, 100, 0, 360, ArcType.ROUND);
     }
 
     public void showplayer(double x, double y, double rad) {

@@ -2,7 +2,6 @@
 package com.example.demo2;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class DroneArena {
@@ -54,14 +53,19 @@ public class DroneArena {
     }
     public double checkDroneAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
         double ans = ang;
-        if (allDrones.size() >= 2)
-        {
-            for (Drone Drone1 : allDrones)
-            {
-                    if (Drone1 != droneo && Drone1.hitting(x, y, 63, 34)) {
-                        ang = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
+        if (allDrones.size() >= 1) {
+            for (Drone Drone1 : allDrones) {
+                if (Drone1 != droneo && Drone1.hitting(x, y, 63, 34)) {
+                    ang = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
+                }
+                if (allEDrones.size() >= 1) {
+                    for (EnemyDrone Drone2 : allEDrones) {
+                        if (Drone2 != droneo && Drone2.hitting(x, y, 80, 80)) {
+                            ang = 180 * Math.atan2(y - Drone2.y, x - Drone2.x) / Math.PI;
+                        }
                     }
                 }
+            }
         }
         if (x > xSize - rad || x < rad) {
             ang = 180 - ang;
