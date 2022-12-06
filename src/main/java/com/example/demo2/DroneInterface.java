@@ -78,7 +78,7 @@ public class DroneInterface extends Application {
             }
         });
 
-        Button btnplr = new Button("Clear Arena");
+        Button btnplr = new Button("Clear Drones");
         btnplr.setTextFill(Color.GREEN);
         btnplr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -88,8 +88,6 @@ public class DroneInterface extends Application {
                 drawWorld();
             }}
         });
-
-
         Alert E = new Alert(AlertType.NONE);
         Button btnAddEnemy = new Button("Add Obstacle");
         btnAddEnemy.setTextFill(Color.RED);

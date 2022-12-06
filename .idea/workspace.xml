@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99ddc99c-1df5-4315-be93-e1b53f94355c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670270053840</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="clear drones button">
+      <created>1670276728572</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670276728572</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -131,6 +135,7 @@
     <MESSAGE value="added obstacle process of removing EnemyDrone" />
     <MESSAGE value="Fixed image" />
     <MESSAGE value="an attempt at collisions" />
-    <option name="LAST_COMMIT_MESSAGE" value="an attempt at collisions" />
+    <MESSAGE value="clear drones button" />
+    <option name="LAST_COMMIT_MESSAGE" value="clear drones button" />
   </component>
 </project>
