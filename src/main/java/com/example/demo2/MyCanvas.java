@@ -21,6 +21,26 @@ public class MyCanvas {
         yCanvasSize = ycs;
 
     }
+    /**
+     * @return xcanvas size
+     */
+    public int getXCanvasSize() {
+        return xCanvasSize;
+    }
+    /**
+     * @return ycanvas size
+     */
+    public int getYCanvasSize() {
+        return yCanvasSize;
+    }
+    /**
+     * clear the canvas
+     */
+    public void clearCanvas() {
+        gc.clearRect(0,  0,  xCanvasSize,  yCanvasSize);		// clear canvas
+    }
+
+
 
     public void showdrone(double x, double y, double rad) {
         Image droneimg;
@@ -34,7 +54,7 @@ public class MyCanvas {
 
     public void showenemydrone(double x, double y, double rad) {
         gc.setFill(Color.GREY);
-        gc.fillArc(x-rad, y-rad, 80, 80, 0, 360, ArcType.ROUND);
+        gc.fillArc(x-rad, y-rad, 50, 50, 0, 360, ArcType.ROUND);
     }
 
     public void showplayer(double x, double y, double rad) {
