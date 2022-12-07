@@ -102,6 +102,7 @@ public class DroneArena {
 
     public double checkObsAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
         double ans = ang;
+        int healthbar = 100;
         if (allDrones.size() >= 1) {
             for (Drone Drone1 : allDrones) {
                 if (Drone1 != droneo && Drone1.hitting(x, y, 100, 55)) {
@@ -111,6 +112,16 @@ public class DroneArena {
                     for (Obstacle Drone2 : allEnDrones) {
                         if (Drone2 != droneo && Drone2.hitting(x, y, 80, 80)) {
                             ang = 180 * Math.atan2(y - Drone2.y, x - Drone2.x) / Math.PI;
+                        }
+                        if (Drone1.hitting(x, y, 100, 55) && Drone2.hitting(x, y, 80, 80)) {
+                            while (healthbar >= 1) {
+                                int healthbar2 = healthbar--;
+                                System.out.println(healthbar2);
+                                if (healthbar2 <= 1) {
+                                    System.out.println("Your Drone was destroyed");
+                                    allDrones.clear();
+                                }
+                            }
                         }
                     }
                 }
