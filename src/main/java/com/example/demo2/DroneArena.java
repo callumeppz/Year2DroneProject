@@ -8,13 +8,10 @@ public class DroneArena implements Serializable {
     double xSize, ySize;
     ArrayList<MovingObstacle> allEDrones;
     private ArrayList<MeteorStrike> allMeteorDrones;
-    ArrayList<Obstacle> allEnDrones;
-    public ArrayList<Drone> allDrones;
-    public ArrayList<Drone> DroneID;
+    protected ArrayList<Obstacle> allEnDrones;
+    protected ArrayList<Drone> allDrones;
+    private ArrayList<Drone> DroneID;
     Random rand = new Random();
-    private ArrayList<Drone> Dronelist = new ArrayList<Drone>();
-    private ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
-
 
     DroneArena(double xS, double yS) {
         xSize = xS;
@@ -49,6 +46,10 @@ public class DroneArena implements Serializable {
         }
     }
 
+    public ArrayList<Obstacle> getobstaclelist() {
+        return allEnDrones;
+    }
+
     public void checkDrones() {
         for (FirstDrone Drone : allDrones) Drone.checkdrone(this);
         for (FirstDrone Drone : allEDrones) Drone.checkdrone(this);
@@ -63,7 +64,6 @@ public class DroneArena implements Serializable {
     }
 
     /**
-     *
      * @return
      */
 
@@ -71,16 +71,18 @@ public class DroneArena implements Serializable {
         allDrones.add(new Drone(rand.nextInt(600), rand.nextInt(350), 10, 55, 5));
         return null;
     }
+
     public void addEDrone() {
         allEDrones.add(new MovingObstacle(rand.nextInt(600), rand.nextInt(350), 10, 55, 5));
     }
+
     public void addEnDrone() {
         allEnDrones.add(new Obstacle(rand.nextInt(600), rand.nextInt(350), 10, 55, 5));
     }
+
     public void addMeteorDrone() {
         getAllMeteorDrones().add(new MeteorStrike(rand.nextInt(20), rand.nextInt(400), 10, 55, 5));
     }
-
 
 
     /**
@@ -163,11 +165,11 @@ public class DroneArena implements Serializable {
                         if (Drone1 != droneo && Drone1.hitting(x, y, 100, 55)) {
                             rad = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
                         }
-                        if (Drone1.hitting(x, y, 100, 55) && Drone4.hitting(x,y,50,50)) {
-                            while (healthbar >= 1){
+                        if (Drone1.hitting(x, y, 100, 55) && Drone4.hitting(x, y, 50, 50)) {
+                            while (healthbar >= 1) {
                                 int healthbar2 = healthbar--;
                                 System.out.println(healthbar2);
-                                if (healthbar2 <= 1){
+                                if (healthbar2 <= 1) {
                                     System.out.println("Your Drone was destroyed");
                                 }
                             }
@@ -187,7 +189,11 @@ public class DroneArena implements Serializable {
         this.allMeteorDrones = allMeteorDrones;
     }
 
+
+
+
 }
+
 
 
 

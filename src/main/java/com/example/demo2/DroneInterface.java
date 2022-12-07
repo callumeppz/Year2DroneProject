@@ -1,5 +1,6 @@
 package com.example.demo2;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,7 +26,7 @@ public class DroneInterface extends Application {
     private MyCanvas mc;
     private AnimationTimer timer;
     private VBox rtPane;
-    private DroneArena arena;
+    private static DroneArena arena;
 
     public void drawWorld () {
         Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, BLACK)};
@@ -110,6 +111,24 @@ public class DroneInterface extends Application {
             }
         });
 
+
+        Button btnSave = new Button("Save");
+        btnSave.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                export();
+            }
+        });
+
+
+        Button btnImport = new Button("load");
+        btnImport.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                importGame();
+            }
+        });
+
         Button btnAddEn = new Button("Meteor Strike");
         final Timer[] timer = {new Timer()};
 
@@ -166,6 +185,8 @@ public class DroneInterface extends Application {
         btnAddEnemy.setMinSize(100,60);
         btnobsclr.setMinSize(100,60);
         btnmobsclr.setMinSize(100,60);
+        btnSave.setMinSize(100,60);
+        btnImport.setMinSize(100,60);
 
         btnStart.setTextFill(PURPLE); //setting the button colours
         btnStop.setTextFill(PURPLE);
@@ -180,7 +201,7 @@ public class DroneInterface extends Application {
         btnmobsclr.setTextFill(PURPLE);
         btnobsclr.setTextFill(PURPLE);
 
-        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr, button2); // returns the buttons to the canvas
+        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr, button2, btnSave, btnImport); // returns the buttons to the canvas
     }
 
     public void drawStatus() {
@@ -226,17 +247,11 @@ public class DroneInterface extends Application {
 
         MenuBar menuBar = new MenuBar();
             Menu savemenu = new Menu("Save");
-            savemenu.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    ResourceManager.export();
-                }
-            });
-
             MenuItem mExport = new MenuItem("Export");
             mExport.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
+                    export();
                 }
             });
 
@@ -244,6 +259,7 @@ public class DroneInterface extends Application {
          mExport.setOnAction(new EventHandler<ActionEvent>() {
              @Override
              public void handle(ActionEvent actionEvent) {
+                 importGame();
              }
          });
 
@@ -255,11 +271,11 @@ public class DroneInterface extends Application {
             mExport.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    ResourceManager.export();
+                    export();
                 }
             });
             MenuItem mTest2 = new MenuItem("Load");
-            mExport.setOnAction(actionEvent -> {ResourceManager.importGame();
+            mImport.setOnAction(actionEvent -> {importGame();
             });
 
             mTest.getItems().addAll(mTest1, mTest2);
@@ -293,5 +309,31 @@ public class DroneInterface extends Application {
     }
     public static void main(String[] args) {
         Application.launch(args);			// launch the GUI
+    }
+
+
+    static void export() { // saves/exports the simulation
+        try {
+            FileOutputStream outFile = new FileOutputStream("C:/callu/Drone/test.txt");
+            ObjectOutputStream outStream = new ObjectOutputStream(outFile);
+            outStream.writeObject(arena);
+            outStream.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void importGame() { // imports/loads
+        File inFile = new File("C:/callu/Drone/test.txt");
+        try {
+            FileInputStream inStream = new FileInputStream(inFile);
+            ObjectInputStream inObjectStream = new ObjectInputStream(inStream);
+            arena = (DroneArena) inObjectStream.readObject();
+            inObjectStream.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
