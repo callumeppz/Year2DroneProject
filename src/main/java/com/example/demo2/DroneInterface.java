@@ -34,7 +34,6 @@ public class DroneInterface extends Application {
         mc.gc.setFill(lngnt);
         mc.gc.fillRect(0, 0, 2.5*mc.xCanvasSize, 2.5*mc.yCanvasSize);
         arena.drawArena(mc);
-        arena.drawArena2(mc);
     }
     private HBox setButtons() {
 
@@ -92,31 +91,24 @@ public class DroneInterface extends Application {
         });
 
         Alert E = new Alert(AlertType.NONE); // add obstacle button, collisions need working on
-        Button btnAddEnemy = new Button("Add Obstacle");
-        final int[] Edroneid = {0};
+        Button btnAddEnemy = new Button("Add Moving Obstacle");
         btnAddEnemy.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String toString3 = ("Enemy Drone ID %s\t" + Edroneid[0]);
-                Label V = new Label(toString3);
-                System.out.printf("\tEnemy Drone ID: %s", Edroneid[0]);
-                rtPane.getChildren().add(V);
-                Edroneid[0]++;
                 arena.addEDrone();
                 drawWorld();
             }
         });
 
-        Button btnAddE = new Button("Add Obstacle");
-
-        btnAddE.setOnAction(new EventHandler<ActionEvent>() {
+        Button btnAddObs = new Button("Add Obstacle");
+        btnAddObs.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Edroneid[0]++;
-                arena.addEDrone();
+                arena.addEnDrone();
                 drawWorld();
             }
         });
+
 
         Button button2 = new Button(); // exit button
         button2.setText("Exit");
@@ -134,8 +126,9 @@ public class DroneInterface extends Application {
         btnplr.setTextFill(PURPLE);
         btnAddEnemy.setTextFill(PURPLE);
         button2.setTextFill(PURPLE);
+        btnAddObs.setTextFill(PURPLE);
 
-        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnplr); // returns the buttons to the canvas
+        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnplr, btnAddObs); // returns the buttons to the canvas
     }
 
     public void drawStatus() {
@@ -146,7 +139,6 @@ public class DroneInterface extends Application {
             rtPane.getChildren().add(l);
         }
     }
-
 
      @Override
     public void start(Stage primaryStage) throws Exception { // main loop

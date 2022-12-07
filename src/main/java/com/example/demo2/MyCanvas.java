@@ -33,8 +33,8 @@ public class MyCanvas {
     }
 
     public void showenemydrone(double x, double y, double rad) {
-        gc.setFill(Color.BLACK);
-        gc.fillArc(x-rad, y-rad, 100, 100, 0, 360, ArcType.ROUND);
+        gc.setFill(Color.DEEPPINK);
+        gc.fillArc(x-rad, y-rad, 50, 50, 0, 360, ArcType.ROUND);
     }
 
     public void showplayer(double x, double y, double rad) {

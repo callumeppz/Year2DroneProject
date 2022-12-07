@@ -33,6 +33,9 @@ public abstract class FirstDrone {
     public void drawdrone2(MyCanvas mc) {
         mc.showenemydrone(x, y, rad);
     }
+    public void drawdrone3(MyCanvas mc) {
+        mc.showenemydrone(x, y, rad);
+    }
 
 
     public String toString() {
@@ -51,6 +54,8 @@ public abstract class FirstDrone {
     public boolean hitting(double ox, double oy, double or, int i) {
         return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (or/2+i/2)*(or/2+i/2);
     }
+
+
 }
 
 
