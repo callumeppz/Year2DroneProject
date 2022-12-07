@@ -6,6 +6,7 @@ public class DroneArena {
 
     double xSize, ySize;
     ArrayList<MovingObstacle> allEDrones;
+    private ArrayList<MeteorStrike> allMeteorDrones;
     ArrayList<Obstacle> allEnDrones;
     public ArrayList<Drone> allDrones;
     Random rand = new Random();
@@ -17,12 +18,14 @@ public class DroneArena {
         allDrones.add(new Drone(rand.nextInt(700), rand.nextInt(400), 10, 55, 10));
         allEDrones = new ArrayList<MovingObstacle>();
         allEnDrones = new ArrayList<Obstacle>();
+        setAllMeteorDrones(new ArrayList<MeteorStrike>());
     }
 
     public void drawArena(MyCanvas mc) {
         for (FirstDrone b : allDrones) b.drawdrone(mc);
         for (FirstDrone b : allEDrones) b.drawdrone2(mc);
         for (FirstDrone b : allEnDrones) b.drawdrone2(mc);
+        for (FirstDrone b : getAllMeteorDrones()) b.drawdrone2(mc);
     }
 
     public void AdjustDrone() {
@@ -35,12 +38,16 @@ public class DroneArena {
         for (FirstDrone b : allEnDrones) {
             b.adjustdrone();
         }
+        for (FirstDrone b : getAllMeteorDrones()) {
+            b.adjustdrone();
         }
+    }
 
     public void checkDrones() {
         for (FirstDrone Drone : allDrones) Drone.checkdrone(this);
         for (FirstDrone Drone : allEDrones) Drone.checkdrone(this);
         for (FirstDrone Drone : allEnDrones) Drone.checkdrone(this);
+        for (FirstDrone Drone : getAllMeteorDrones()) Drone.checkdrone(this);
     }
 
     public ArrayList<String> describeAll() {
@@ -48,22 +55,29 @@ public class DroneArena {
         for (FirstDrone b : allDrones) ans.add(b.toString());
         return ans;
     }
+
     public Object addDrone() {
         allDrones.add(new Drone(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
         return null;
     }
+
     public void addEDrone() {
         allEDrones.add(new MovingObstacle(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
     }
+
     public void addEnDrone() {
         allEnDrones.add(new Obstacle(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
+    }
+
+    public void addMeteorDrone() {
+        getAllMeteorDrones().add(new MeteorStrike(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
     }
 
     public double checkDroneAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
         double ans = ang;
         if (allDrones.size() >= 1) {
             for (Drone Drone1 : allDrones) {
-                if (Drone1 != droneo && Drone1.hitting(x, y, 63, 34)) {
+                if (Drone1 != droneo && Drone1.hitting(x, y, 100, 55)) {
                     ang = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
                 }
                 if (allEDrones.size() >= 1) {
@@ -86,11 +100,41 @@ public class DroneArena {
             ang = 180 - ang;
         }
 
-        if (y > ySize - rad || y < rad ) {
+        if (y > ySize - rad || y < rad) {
             ang = -ang;
         }
         return ang;
 
+    }
+
+    public double checkMeteorAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
+        double ans = rad;
+        if (getAllMeteorDrones().size() >= 1) {
+            for (MeteorStrike Drone4 : getAllMeteorDrones()) {
+                if (Drone4 != droneo && Drone4.hitting(x, y, 80, 80)) {
+                    rad = 180 * Math.atan2(y - Drone4.y, x - Drone4.x) / Math.PI;
+                }
+                if (allDrones.size() >= 1) {
+                    for (Drone Drone1 : allDrones) {
+                        if (Drone1 != droneo && Drone1.hitting(x, y, 100, 55)) {
+                            rad = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
+                        }
+                    }
+                }
+            }
+        }
+        return rad;
+    }
+
+
+    public ArrayList<MeteorStrike> getAllMeteorDrones() {
+        return allMeteorDrones;
+    }
+
+
+
+    public void setAllMeteorDrones(ArrayList<MeteorStrike> allMeteorDrones) {
+        this.allMeteorDrones = allMeteorDrones;
     }
 }
 

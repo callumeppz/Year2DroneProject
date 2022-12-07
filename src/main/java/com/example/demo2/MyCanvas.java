@@ -29,12 +29,12 @@ public class MyCanvas {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        gc.drawImage(droneimg, x-rad, y-rad, 63, 34);
+        gc.drawImage(droneimg, x-rad, y-rad, 100, 55);
     }
 
     public void showenemydrone(double x, double y, double rad) {
-        gc.setFill(Color.DEEPPINK);
-        gc.fillArc(x-rad, y-rad, 50, 50, 0, 360, ArcType.ROUND);
+        gc.setFill(Color.GREY);
+        gc.fillArc(x-rad, y-rad, 80, 80, 0, 360, ArcType.ROUND);
     }
 
     public void showplayer(double x, double y, double rad) {

@@ -1,6 +1,12 @@
 package com.example.demo2;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -25,7 +31,7 @@ public class DroneInterface extends Application {
     private DroneArena arena;
 
     public void drawWorld () {
-        Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, BLUE)};
+        Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, BLACK)};
         LinearGradient lngnt = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
         mc.gc.setFill(lngnt);
         mc.gc.fillRect(0, 0, 2.5*mc.xCanvasSize, 2.5*mc.yCanvasSize);
@@ -75,28 +81,22 @@ public class DroneInterface extends Application {
             }
         });
 
-      Button btnplr = new Button("Clear Drones"); // clears the arena
-        btnplr.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                for (Drone allDrone : arena.allDrones) {
-                    arena.allDrones.clear();
-                drawWorld();
-            }}
-        });
 
         Button btnclr = new Button("Clear Arena"); // clears the arena
         btnclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                for (Drone allDrone : arena.allDrones) {
+                for (Drone allDrones : arena.allDrones) {
                     arena.allDrones.clear();
                 for (MovingObstacle allEDrone : arena.allEDrones) {
                     arena.allEDrones.clear();
                 for (Obstacle allEnDrone : arena.allEnDrones) {
                     arena.allEnDrones.clear();
                     drawWorld();
-                }}}}
+                    for (MeteorStrike allMeteorDrones : arena.getAllMeteorDrones()) {
+                        arena.getAllMeteorDrones().clear();
+                        drawWorld();
+                }}}}}
         });
 
         Alert E = new Alert(AlertType.NONE); // add obstacle button
@@ -108,6 +108,32 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
+
+        Button btnAddEn = new Button("Meteor Strike");
+        final Timer[] timer = {new Timer()};
+
+        btnAddEn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                timer[0] = new Timer();
+                timer[0].schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        arena.addMeteorDrone();
+                    }
+                }, 0, 1000);
+                drawWorld();
+            }
+        });
+        Button btnStpEn = new Button("Stop Meteor Strike");
+        btnStpEn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                    timer[0].cancel();
+                    drawWorld();
+                }
+        });
+
 
         Button btnAddObs = new Button("Add Obstacle");
         btnAddObs.setOnAction(new EventHandler<ActionEvent>() {
@@ -131,13 +157,13 @@ public class DroneInterface extends Application {
         btnStop.setTextFill(PURPLE);
         btnStop.setTextFill(PURPLE);
         btnAdd.setTextFill(PURPLE);
-        btnplr.setTextFill(PURPLE);
         btnAddEnemy.setTextFill(PURPLE);
         button2.setTextFill(PURPLE);
         btnAddObs.setTextFill(PURPLE);
         btnclr.setTextFill(PURPLE);
+        btnAddObs.setTextFill(PURPLE);
 
-        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnplr, btnAddObs,btnclr); // returns the buttons to the canvas
+        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnAddObs,btnclr, btnAddEn, btnStpEn); // returns the buttons to the canvas
     }
 
     public void drawStatus() {
@@ -238,7 +264,7 @@ public class DroneInterface extends Application {
                 Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, ORANGE)};
                 LinearGradient lngnt = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
                 bp.setBottom(setButtons());
-                bp.setBackground(Background.fill(LIGHTGREY));
+                bp.setBackground(Background.fill(MEDIUMPURPLE));
                 drawWorld();
             }
         });
@@ -246,6 +272,7 @@ public class DroneInterface extends Application {
         Group buttons = new Group(button2);
         bp.setBottom(buttons);
         Scene scene = new Scene(bp, 1200, 600);
+
         bp.prefHeightProperty().bind(scene.heightProperty());
         bp.prefWidthProperty().bind(scene.widthProperty());
         primaryStage.setScene(scene);
