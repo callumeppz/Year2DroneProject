@@ -98,6 +98,7 @@ public class DroneInterface extends Application {
                     drawWorld();
                 }}}}
         });
+
         Alert E = new Alert(AlertType.NONE); // add obstacle button
         Button btnAddEnemy = new Button("Add Moving Obstacle");
         btnAddEnemy.setOnAction(new EventHandler<ActionEvent>() {
@@ -107,6 +108,7 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
+
         Button btnAddObs = new Button("Add Obstacle");
         btnAddObs.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -115,6 +117,7 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
+
         Button button2 = new Button(); // exit button
         button2.setText("Exit");
         button2.setOnAction(new EventHandler<ActionEvent>() {
