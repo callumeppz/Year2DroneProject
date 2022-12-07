@@ -21,6 +21,8 @@ public class Drone extends FirstDrone {
     }
     protected void checkdrone(DroneArena b) {
         DroneAngle = b.checkDroneAngle(x, y, rad, DroneAngle, this);
+        DroneAngle = b.checkObsAngle(x,y,rad,DroneAngle,this);
+        DroneAngle = b.checkMeteorAngle(x,y,DroneAngle,this);
     }
     public boolean hitting(double ox, double oy, double or, int i ) {
         return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (63/2+63/2) * (32/2+32/2);

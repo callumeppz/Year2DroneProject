@@ -12,13 +12,15 @@ public class Obstacle extends FirstDrone {
 
     @Override
     protected void adjustdrone() {
+        double radAngle = DroneAngle*Math.PI/180;
     }
     protected String getStrType() {
         return "Drone";
     }
 
+    @Override
     protected void checkdrone(DroneArena b) {
-        DroneAngle = b.checkDroneAngle(x, y, rad, DroneAngle, this);
+        DroneAngle = b.checkObsAngle(x, y, rad, DroneAngle, this);
     }
     public boolean hitting(double ox, double oy, double or, int i) {
         return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (63/2+63/2) * (32/2+32/2);

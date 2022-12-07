@@ -121,7 +121,7 @@ public class DroneInterface extends Application {
                     public void run() {
                         arena.addMeteorDrone();
                     }
-                }, 0, 1000);
+                }, 0, 400);
                 drawWorld();
             }
         });
@@ -162,6 +162,7 @@ public class DroneInterface extends Application {
         btnAddObs.setTextFill(PURPLE);
         btnclr.setTextFill(PURPLE);
         btnAddObs.setTextFill(PURPLE);
+        btnStpEn.setTextFill(PURPLE);
 
         return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnAddObs,btnclr, btnAddEn, btnStpEn); // returns the buttons to the canvas
     }
@@ -174,7 +175,6 @@ public class DroneInterface extends Application {
             rtPane.getChildren().add(l);
         }
     }
-
      @Override
     public void start(Stage primaryStage) throws Exception { // main loop
 

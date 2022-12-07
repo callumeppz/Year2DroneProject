@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18bb28ea-4ea7-4bb1-8888-23dda2b25cf7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/MeteorStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Meteor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/space.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/Obstacle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670381848757</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added meteor strike">
+      <created>1670430908564</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670430908564</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -132,6 +135,7 @@
     <MESSAGE value="adding drone.png" />
     <MESSAGE value="Added different obstacle types" />
     <MESSAGE value="general clean up, need to add saving feature and comments, almost final" />
-    <option name="LAST_COMMIT_MESSAGE" value="general clean up, need to add saving feature and comments, almost final" />
+    <MESSAGE value="Added meteor strike" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added meteor strike" />
   </component>
 </project>

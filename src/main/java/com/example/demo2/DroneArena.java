@@ -70,7 +70,7 @@ public class DroneArena {
     }
 
     public void addMeteorDrone() {
-        getAllMeteorDrones().add(new MeteorStrike(rand.nextInt(700), rand.nextInt(400), 10, 55, 5));
+        getAllMeteorDrones().add(new MeteorStrike(rand.nextInt(20), rand.nextInt(400), 10, 55, 5));
     }
 
     public double checkDroneAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
@@ -84,13 +84,6 @@ public class DroneArena {
                     for (MovingObstacle Drone2 : allEDrones) {
                         if (Drone2 != droneo && Drone2.hitting(x, y, 80, 80)) {
                             ang = 180 * Math.atan2(y - Drone2.y, x - Drone2.x) / Math.PI;
-                        }
-                        if (allEnDrones.size() >= 1) {
-                            for (Obstacle Drone3 : allEnDrones) {
-                                if (Drone3 != droneo && Drone3.hitting(x, y, 80, 80)) {
-                                    ang = 180 * Math.atan2(y - Drone3.y, x - Drone3.x) / Math.PI;
-                                }
-                            }
                         }
                     }
                 }
@@ -107,8 +100,28 @@ public class DroneArena {
 
     }
 
-    public double checkMeteorAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
+    public double checkObsAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
+        double ans = ang;
+        if (allDrones.size() >= 1) {
+            for (Drone Drone1 : allDrones) {
+                if (Drone1 != droneo && Drone1.hitting(x, y, 100, 55)) {
+                    ang = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
+                }
+                if (allEnDrones.size() >= 1) {
+                    for (Obstacle Drone2 : allEnDrones) {
+                        if (Drone2 != droneo && Drone2.hitting(x, y, 80, 80)) {
+                            ang = 180 * Math.atan2(y - Drone2.y, x - Drone2.x) / Math.PI;
+                        }
+                    }
+                }
+            }
+        }
+        return ang;
+    }
+
+    public double checkMeteorAngle(double x, double y, double rad, FirstDrone droneo) {
         double ans = rad;
+        int healthbar = 100;
         if (getAllMeteorDrones().size() >= 1) {
             for (MeteorStrike Drone4 : getAllMeteorDrones()) {
                 if (Drone4 != droneo && Drone4.hitting(x, y, 80, 80)) {
@@ -119,6 +132,15 @@ public class DroneArena {
                         if (Drone1 != droneo && Drone1.hitting(x, y, 100, 55)) {
                             rad = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
                         }
+                        if (Drone1.hitting(x, y, 100, 55) && Drone4.hitting(x,y,80,80)) {
+                            while (healthbar >= 1){
+                                int healthbar2 = healthbar--;
+                                System.out.println(healthbar2);
+                                if (healthbar2 <= 1){
+                                    System.out.println("Your Drone was destroyed");
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -126,12 +148,9 @@ public class DroneArena {
         return rad;
     }
 
-
     public ArrayList<MeteorStrike> getAllMeteorDrones() {
         return allMeteorDrones;
     }
-
-
 
     public void setAllMeteorDrones(ArrayList<MeteorStrike> allMeteorDrones) {
         this.allMeteorDrones = allMeteorDrones;
