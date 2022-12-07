@@ -1,7 +1,5 @@
 package com.example.demo2;
 
-import java.io.*;
-import java.security.cert.X509CertSelector;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -11,10 +9,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.*;
 import javafx.stage.Stage;
@@ -88,6 +84,20 @@ public class DroneInterface extends Application {
                 drawWorld();
             }}
         });
+
+        Button btnclr = new Button("Clear Arena"); // clears the arena
+        btnclr.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                for (Drone allDrone : arena.allDrones) {
+                    arena.allDrones.clear();
+                for (MovingObstacle allEDrone : arena.allEDrones) {
+                    arena.allEDrones.clear();
+                for (Obstacle allEnDrone : arena.allEnDrones) {
+                    arena.allEnDrones.clear();
+                    drawWorld();
+                }}}}
+        });
         Alert E = new Alert(AlertType.NONE); // add obstacle button
         Button btnAddEnemy = new Button("Add Moving Obstacle");
         btnAddEnemy.setOnAction(new EventHandler<ActionEvent>() {
@@ -122,8 +132,9 @@ public class DroneInterface extends Application {
         btnAddEnemy.setTextFill(PURPLE);
         button2.setTextFill(PURPLE);
         btnAddObs.setTextFill(PURPLE);
+        btnclr.setTextFill(PURPLE);
 
-        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnplr, btnAddObs); // returns the buttons to the canvas
+        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnplr, btnAddObs,btnclr); // returns the buttons to the canvas
     }
 
     public void drawStatus() {

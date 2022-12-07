@@ -5,8 +5,8 @@ import java.util.Random;
 public class DroneArena {
 
     double xSize, ySize;
-    private ArrayList<MovingObstacle> allEDrones;
-    private ArrayList<Obstacle> allEnDrones;
+    ArrayList<MovingObstacle> allEDrones;
+    ArrayList<Obstacle> allEnDrones;
     public ArrayList<Drone> allDrones;
     Random rand = new Random();
 
