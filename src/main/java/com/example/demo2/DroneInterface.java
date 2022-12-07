@@ -36,7 +36,6 @@ public class DroneInterface extends Application {
         arena.drawArena(mc);
     }
     private HBox setButtons() {
-
         Alert S = new Alert(AlertType.NONE);
         Button btnStart = new Button("Start"); // begins and displays a message
         btnStart.setOnAction(new EventHandler<ActionEvent>() {
@@ -89,8 +88,7 @@ public class DroneInterface extends Application {
                 drawWorld();
             }}
         });
-
-        Alert E = new Alert(AlertType.NONE); // add obstacle button, collisions need working on
+        Alert E = new Alert(AlertType.NONE); // add obstacle button
         Button btnAddEnemy = new Button("Add Moving Obstacle");
         btnAddEnemy.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -99,7 +97,6 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
-
         Button btnAddObs = new Button("Add Obstacle");
         btnAddObs.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -108,8 +105,6 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
-
-
         Button button2 = new Button(); // exit button
         button2.setText("Exit");
         button2.setOnAction(new EventHandler<ActionEvent>() {

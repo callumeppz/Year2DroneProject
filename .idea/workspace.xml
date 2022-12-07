@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18bb28ea-4ea7-4bb1-8888-23dda2b25cf7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/Obstacle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/EnemyDrone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/MovingObstacle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,12 +74,20 @@
       <option name="project" value="LOCAL" />
       <updated>1670370383984</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added different obstacle types">
+      <created>1670373678481</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670373678481</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Obstacles physics fixed" />
     <MESSAGE value="adding drone.png" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding drone.png" />
+    <MESSAGE value="Added different obstacle types" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added different obstacle types" />
   </component>
 </project>
