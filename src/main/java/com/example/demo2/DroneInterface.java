@@ -85,14 +85,14 @@ public class DroneInterface extends Application {
                arena.allDrones.remove(0);
                 }
         });
-        Button btnobsclr = new Button("Remove Moving\nObstacle"); // removes a drone
+        Button btnobsclr = new Button("Remove Moving\nAsteroid"); // removes a drone
         btnobsclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 arena.allEDrones.remove(0);
             }
         });
-        Button btnmobsclr = new Button("Remove Obstacle"); // removes a drone
+        Button btnmobsclr = new Button("Remove Asteroid"); // removes a drone
         btnmobsclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -180,7 +180,7 @@ public class DroneInterface extends Application {
         btnmobsclr.setTextFill(PURPLE);
         btnobsclr.setTextFill(PURPLE);
 
-        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, button2, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr); // returns the buttons to the canvas
+        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr, button2); // returns the buttons to the canvas
     }
 
     public void drawStatus() {
@@ -194,7 +194,7 @@ public class DroneInterface extends Application {
      @Override
     public void start(Stage primaryStage) throws Exception { // main loop
 
-        primaryStage.setTitle("Drone Simulator");
+        primaryStage.setTitle("Space Drone Simulator (30010641)");
         BorderPane bp = new BorderPane();
         Group root = new Group();
         Canvas canvas = new Canvas( 1100, 600);
@@ -219,7 +219,7 @@ public class DroneInterface extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 X.setAlertType(AlertType.INFORMATION);
-                X.setContentText("Drone Simulation made by Callum Apps (30010641)");
+                X.setContentText("Drone Simulation space version made by Callum Apps (30010641)");
                 X.show();
             }
         });

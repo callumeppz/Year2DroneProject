@@ -6,13 +6,13 @@ import java.nio.file.Paths;
 
 public class ResourceManager implements Serializable {
 
-    private static DroneArena arena;
+    private static DroneArena droneArena;
 
     static void export() { // saves/exports the simulation
         try {
             FileOutputStream outFile = new FileOutputStream("C:\\Users\\callu\\droneSim.txt");
             ObjectOutputStream outStream = new ObjectOutputStream(outFile);
-            outStream.writeObject(arena);
+            outStream.writeObject(droneArena);
             outStream.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -25,7 +25,7 @@ public class ResourceManager implements Serializable {
          try {
          FileInputStream inStream = new FileInputStream(inFile);
          ObjectInputStream inObjectStream = new ObjectInputStream(inStream);
-         arena = (DroneArena) inObjectStream.readObject();
+         droneArena = (DroneArena) inObjectStream.readObject();
          inObjectStream.close();
          } catch (IOException e) {
          throw new RuntimeException(e);
