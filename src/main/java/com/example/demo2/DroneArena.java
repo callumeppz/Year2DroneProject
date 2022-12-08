@@ -52,6 +52,9 @@ public class DroneArena implements Serializable { // used in the saving function
             b.adjustdrone();
         }
     }
+    /**
+     * moves drones and obstacles
+     */
 
     public void checkDrones() { // checks each of the drones individually, checks if they are colliding with other entities/walls
         for (FirstDrone Drone : allDrones) Drone.checkdrone(this);
@@ -59,6 +62,11 @@ public class DroneArena implements Serializable { // used in the saving function
         for (FirstDrone Drone : allEnDrones) Drone.checkdrone(this);
         for (FirstDrone Drone : getAllMeteorDrones()) Drone.checkdrone(this);
     }
+
+    /**
+     * checks each of the drones individually, incase of any collisions
+     * @return
+     */
 
     public ArrayList<String> describeAll() {
         ArrayList<String> ans = new ArrayList<String>();
@@ -74,6 +82,10 @@ public class DroneArena implements Serializable { // used in the saving function
         allDrones.add(new Drone(rand.nextInt(600), rand.nextInt(100, 450), 10, 55, 5));
         return null;
     }
+
+    /**
+     * used to add a drone to the canvas
+     */
 
     public void addEDrone() { // function to add meteor entities
         allEDrones.add(new MovingObstacle(rand.nextInt(600), rand.nextInt(100, 450), 10, 55, 5));
@@ -98,6 +110,11 @@ public class DroneArena implements Serializable { // used in the saving function
     return ans;
 }
 
+    /**
+     * will be used for healthbar, however is still a work in progress
+     * @param drone
+     * @return
+     */
     public boolean checkifalive(Drone drone) { // ignore for now WIP
         boolean ans = true;
         if(drone.health <= 0) {
@@ -140,7 +157,17 @@ public class DroneArena implements Serializable { // used in the saving function
         return ang; // returns drone angle
     }
 
-
+    /**
+     * used as a collision function between the drone class and the moving obstacle class, also used as drone collision method
+     * from the borders of the borderpane
+     *
+     * @param x
+     * @param y
+     * @param rad
+     * @param ang
+     * @param droneo
+     * @return
+     */
 
     public double checkObsAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
         double ans = ang;
@@ -171,6 +198,7 @@ public class DroneArena implements Serializable { // used in the saving function
 
 
     /**
+     * function used to provide accurate collisions between drone and obstacle
      *
      * @param x
      * @param y
@@ -196,6 +224,11 @@ public class DroneArena implements Serializable { // used in the saving function
             }
         return rad;
     }
+
+    /**
+     * returns the drones new angle
+     * @return
+     */
     public ArrayList<MeteorStrike> getAllMeteorDrones() {
         return allMeteorDrones;
     }

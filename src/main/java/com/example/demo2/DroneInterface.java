@@ -268,6 +268,10 @@ public class DroneInterface extends Application {
                 "-fx-background-color: Grey;"+
                 "-fx-font: normal bold 10px 'Lucida Console';");
 
+        /**
+         * all buttons on the scene are declared here
+         */
+
         return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr, button2, btnSave, btnImport, btnAI, btnAIoff); // returns the buttons to the canvas
     } // adds all the buttons to a hbox which is then used in borderpane
 
@@ -311,6 +315,9 @@ public class DroneInterface extends Application {
 
             }
         };
+         /**
+          * animation timer used for all movement and collision
+          */
 
 
         Alert X = new Alert(AlertType.INFORMATION); //Popups created for menubar
@@ -379,6 +386,9 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
+         /**
+          * button used to start the simulation from the main menu
+          */
 
          Button load = new Button();
          load.setText("load");
@@ -428,7 +438,7 @@ public class DroneInterface extends Application {
     }
 
     /**
-     *
+     * sets the scene and the borderpane with all buttons and entities
      * @param scene
      */
 
@@ -456,7 +466,7 @@ public class DroneInterface extends Application {
     }
 
     /**
-     *
+     * usermove function is used for manual player movement and is activated by a button.
      */
 
     static void export() { // saves/exports the simulation
@@ -471,7 +481,8 @@ public class DroneInterface extends Application {
     }
 
     /**
-     *
+     * export/import function used for saving the current state of the arena as a txt in my documents, then being
+     * able to reload the state.
      */
     public static void importGame() { // imports/loads
         File inFile = new File("/Users/callumapps/Desktop/drone/drone.txt"); // loads from this specific path name

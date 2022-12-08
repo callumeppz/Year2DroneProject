@@ -24,7 +24,7 @@ public class Obstacle extends FirstDrone {
 
     @Override
     protected void checkdrone(DroneArena b) {
-        DroneAngle = b.checkObsAngle(x, y, rad, DroneAngle, this);
+        DroneAngle = b.checkObsAngle(x, y, rad, DroneAngle, this); // checks the angle of obstacle and if its hitting any other entities.
         /**
          *
          */
