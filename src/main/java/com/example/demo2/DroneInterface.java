@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -325,13 +326,54 @@ public class DroneInterface extends Application {
                 LinearGradient lngnt = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
                 bp.setBottom(setButtons());
                 bp.setBackground(Background.fill(MEDIUMPURPLE));
+                button2.setVisible(false);
                 drawWorld();
             }
         });
 
+         Button button3 = new Button();
+         button3.setText("load");
+         button3.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent actionEvent) {
+                importGame();
+                button3.setVisible(false);
 
-        Group buttons = new Group(button2);
-        bp.setBottom(buttons);
+             }
+         });
+
+         Button button4 = new Button();
+         button4.setText("exit");
+         button4.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent actionEvent) {
+                 System.exit(0);
+             }
+         });
+
+
+        Group buttons = new Group(button2, button3); // starting screen edited using css
+        button2.setMinSize(150,30);
+        button3.setMinSize(150,30);
+        button4.setMinSize(150,30);
+        button2.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font-weight: italic;"+
+                "-fx-font-size: 25;");
+         button3.setStyle("-fx-text-fill: purple;"+
+                 "-fx-background-color: Grey;"+
+                 "-fx-font-weight: italic;"+
+                 "-fx-font-size: 25;");
+         button4.setStyle("-fx-text-fill: purple;"+
+                 "-fx-background-color: Grey;"+
+                 "-fx-font-weight: italic;"+
+                 "-fx-font-size: 25;");
+        HBox hbox = new HBox();
+        hbox.getChildren().add(button2);
+        hbox.getChildren().add(button3);
+        hbox.getChildren().add(button4);
+        bp.setBottom(hbox);
+
         bp.prefHeightProperty().bind(scene.heightProperty());
         bp.prefWidthProperty().bind(scene.widthProperty());
         primaryStage.setScene(scene);
