@@ -83,7 +83,7 @@ public class DroneInterface extends Application {
         });
 
 
-        Button btnclr = new Button("Remove Drone"); // removes a drone
+        Button btnclr = new Button("Remove\nDrone"); // removes a drone
         btnclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -101,7 +101,7 @@ public class DroneInterface extends Application {
                 }
             }
         });
-        Button btnmobsclr = new Button("Remove Asteroid"); // removes a drone
+        Button btnmobsclr = new Button("Remove\nAsteroid"); // removes a drone
         btnmobsclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -157,7 +157,7 @@ public class DroneInterface extends Application {
             }
         });
 
-        Button btnAddEn = new Button("Asteroid Strike");
+        Button btnAddEn = new Button("Asteroid\nStrike");
         final Timer[] timer = {new Timer()};
 
         btnAddEn.setOnAction(new EventHandler<ActionEvent>() {
@@ -184,7 +184,7 @@ public class DroneInterface extends Application {
         });
 
 
-        Button btnAddObs = new Button("Add Asteroid");
+        Button btnAddObs = new Button("Add\nAsteroid");
         btnAddObs.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -202,22 +202,22 @@ public class DroneInterface extends Application {
             } // exits
         });
 
-        btnStart.setMinSize(100,60); // setting buttons sizes
-        btnStop.setMinSize(100,60);
-        btnclr.setMinSize(100,60);
-        btnAddObs.setMinSize(100,60);
-        btnStpEn.setMinSize(100,60);
-        btnAdd.setMinSize(100,60);
-        btnAddEnemy.setMinSize(100,60);
-        button2.setMinSize(100,60);
-        btnAddEn.setMinSize(100,60);
-        btnAddEnemy.setMinSize(100,60);
-        btnobsclr.setMinSize(100,60);
-        btnmobsclr.setMinSize(100,60);
-        btnSave.setMinSize(100,60);
-        btnImport.setMinSize(100,60);
-        btnAI.setMinSize(100,60);
-        btnAIoff.setMinSize(100,60);
+        btnStart.setMinSize(85,60); // setting buttons sizes
+        btnStop.setMinSize(85,60);
+        btnclr.setMinSize(85,60);
+        btnAddObs.setMinSize(85,60);
+        btnStpEn.setMinSize(85,60);
+        btnAdd.setMinSize(85,60);
+        btnAddEnemy.setMinSize(85,60);
+        button2.setMinSize(85,60);
+        btnAddEn.setMinSize(85,60);
+        btnAddEnemy.setMinSize(85,60);
+        btnobsclr.setMinSize(85,60);
+        btnmobsclr.setMinSize(85,60);
+        btnSave.setMinSize(85,60);
+        btnImport.setMinSize(85,60);
+        btnAI.setMinSize(85,60);
+        btnAIoff.setMinSize(85,60);
 
 
         btnStart.setStyle("-fx-text-fill: purple;"+
@@ -237,7 +237,7 @@ public class DroneInterface extends Application {
                 "-fx-font: normal bold 10px 'Lucida Console';");
         btnAddEn.setStyle("-fx-text-fill: purple;"+
                 "-fx-background-color: Grey;"+
-                "-fx-font: normal bold 7px 'Lucida Console';");
+                "-fx-font: normal bold 10px 'Lucida Console';");
         btnclr.setStyle("-fx-text-fill: purple;"+
                 "-fx-background-color: Grey;"+
                 "-fx-font: normal bold 10px 'Lucida Console';");
@@ -439,7 +439,7 @@ public class DroneInterface extends Application {
 
     static void export() { // saves/exports the simulation
         try {
-            FileOutputStream outFile = new FileOutputStream("C:/callu/Drone/test.txt");
+            FileOutputStream outFile = new FileOutputStream("/Users/callumapps/Desktop/drone/drone.txt");
             ObjectOutputStream outStream = new ObjectOutputStream(outFile);
             outStream.writeObject(arena);
             outStream.close();
@@ -452,7 +452,7 @@ public class DroneInterface extends Application {
      *
      */
     public static void importGame() { // imports/loads
-        File inFile = new File("C:/callu/Drone/test.txt");
+        File inFile = new File("/Users/callumapps/Desktop/drone/drone.txt");
         try {
             FileInputStream inStream = new FileInputStream(inFile);
             ObjectInputStream inObjectStream = new ObjectInputStream(inStream);

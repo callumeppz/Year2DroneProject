@@ -35,6 +35,7 @@ public class Drone extends FirstDrone {
         if (!isplayer) {
             x += DroneSpeed * Math.cos(radAngle);
             y += DroneSpeed * Math.sin(radAngle);
+
         }
 
 

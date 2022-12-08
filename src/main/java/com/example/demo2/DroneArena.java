@@ -32,7 +32,6 @@ public class DroneArena implements Serializable { // used in the saving function
 
     public void drawArena(MyCanvas mc) { // places the drones/entities onto the canvas
         for (FirstDrone b : allDrones) b.drawdrone(mc);
-        //for (FirstDrone b : allDrones) b.drawhealth(mc); //attempt at a healthbar, needs fixing
         for (FirstDrone b : allEDrones) b.drawdrone2(mc);
         for (FirstDrone b : allEnDrones) b.drawdrone2(mc);
 

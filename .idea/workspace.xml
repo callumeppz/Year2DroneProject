@@ -4,23 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18bb28ea-4ea7-4bb1-8888-23dda2b25cf7" name="Changes" comment="">
+    <list default="true" id="9d0e8eff-6f43-4d58-94a5-667229d7e7a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/Drone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneArena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/FirstDrone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/MyCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo2/DroneInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,226 +30,37 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="2IYNnyCZY95tMZhNqY5sOTAULtq" />
+  <component name="ProjectId" id="2IcJdHj0OyH5uNVEk0MLGbGWrxC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/callu/IdeaProjects/dronegui_final2/src/main/resources&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\callu\IdeaProjects\dronegui_final2\src\main\resources" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\callu\IdeaProjects\dronegui_final2\src\main\resources" />
-      <recent name="C:\Users\callu\IdeaProjects\dronegui_final2\src\main\resources\com\example\demo2" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.demo2" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Drone GUI" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.example.demo2.DroneInterface" />
-      <module name="dronegui_final2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.example.demo2.MAIN" />
-      <module name="dronegui_final2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Drone GUI" />
-      <item itemvalue="Application.Main" />
-    </list>
-  </component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="18bb28ea-4ea7-4bb1-8888-23dda2b25cf7" name="Changes" comment="" />
-      <created>1670354728097</created>
+      <changelist id="9d0e8eff-6f43-4d58-94a5-667229d7e7a5" name="Changes" comment="" />
+      <created>1670475023955</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1670354728097</updated>
+      <updated>1670475023955</updated>
     </task>
-    <task id="LOCAL-00001" summary="Obstacles physics fixed">
-      <created>1670369942834</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1670369942834</updated>
-    </task>
-    <task id="LOCAL-00002" summary="adding drone.png">
-      <created>1670370383984</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1670370383984</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Added different obstacle types">
-      <created>1670373678481</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1670373678481</updated>
-    </task>
-    <task id="LOCAL-00004" summary="general clean up, need to add saving feature and comments, almost final">
-      <created>1670374339350</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1670374339350</updated>
-    </task>
-    <task id="LOCAL-00005" summary="general clean up, need to add saving feature and comments, almost final">
-      <created>1670375138632</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1670375138632</updated>
-    </task>
-    <task id="LOCAL-00006" summary="general clean up, need to add saving feature and comments, almost final">
-      <created>1670381848757</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1670381848757</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added meteor strike">
-      <created>1670430908564</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1670430908564</updated>
-    </task>
-    <task id="LOCAL-00008" summary="fixed physics">
-      <created>1670432934842</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1670432934842</updated>
-    </task>
-    <task id="LOCAL-00009" summary="attempting healthbar">
-      <created>1670433084175</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1670433084175</updated>
-    </task>
-    <task id="LOCAL-00010" summary="made the canvas neater">
-      <created>1670451402715</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1670451402715</updated>
-    </task>
-    <task id="LOCAL-00011" summary="made the canvas neater">
-      <created>1670451946598</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1670451946598</updated>
-    </task>
-    <task id="LOCAL-00012" summary="added saving feature">
-      <created>1670454449194</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1670454449194</updated>
-    </task>
-    <task id="LOCAL-00013" summary="added playable character">
-      <created>1670460058435</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1670460058435</updated>
-    </task>
-    <task id="LOCAL-00014" summary="added some commenting">
-      <created>1670467782737</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1670467782737</updated>
-    </task>
-    <task id="LOCAL-00015" summary="using css to make the start and load screen nicer">
-      <created>1670469569836</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1670469569836</updated>
-    </task>
-    <task id="LOCAL-00016" summary="fixing some small issues">
-      <created>1670470062606</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1670470062606</updated>
-    </task>
-    <task id="LOCAL-00017" summary="adding css to all buttons">
-      <created>1670470444284</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1670470444284</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Added main">
-      <created>1670470918728</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1670470918728</updated>
-    </task>
-    <task id="LOCAL-00019" summary="start on healthbar for drones">
-      <created>1670473501799</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1670473501799</updated>
-    </task>
-    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Obstacles physics fixed" />
-    <MESSAGE value="adding drone.png" />
-    <MESSAGE value="Added different obstacle types" />
-    <MESSAGE value="general clean up, need to add saving feature and comments, almost final" />
-    <MESSAGE value="Added meteor strike" />
-    <MESSAGE value="fixed physics" />
-    <MESSAGE value="attempting healthbar" />
-    <MESSAGE value="made the canvas neater" />
-    <MESSAGE value="added saving feature" />
-    <MESSAGE value="added playable character" />
-    <MESSAGE value="added some commenting" />
-    <MESSAGE value="using css to make the start and load screen nicer" />
-    <MESSAGE value="fixing some small issues" />
-    <MESSAGE value="adding css to all buttons" />
-    <MESSAGE value="Added main" />
-    <MESSAGE value="start on healthbar for drones" />
-    <option name="LAST_COMMIT_MESSAGE" value="start on healthbar for drones" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.util.ConcurrentModificationException" package="java.util" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.RuntimeException" package="java.lang" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
