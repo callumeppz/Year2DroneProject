@@ -251,6 +251,7 @@ public class DroneInterface extends Application {
         mc = new MyCanvas(canvas.getGraphicsContext2D(), 700, 600, BEIGE);
         arena = new DroneArena(1050, 600);
 
+
         timer = new AnimationTimer() {
             public void handle(long currentNanoTime) { // timer
                 arena.checkDrones();
@@ -260,6 +261,7 @@ public class DroneInterface extends Application {
                 drawStatus();
             }
         };
+
 
         Alert X = new Alert(AlertType.NONE);
         Menu filemenu = new Menu("File");
@@ -327,6 +329,7 @@ public class DroneInterface extends Application {
             }
         });
 
+
         Group buttons = new Group(button2);
         bp.setBottom(buttons);
         bp.prefHeightProperty().bind(scene.heightProperty());
@@ -356,9 +359,11 @@ public class DroneInterface extends Application {
                 case "s":
                     player.y+=10;
                     break;
+
             }
         });
     }
+
     static void export() { // saves/exports the simulation
         try {
             FileOutputStream outFile = new FileOutputStream("C:/callu/Drone/test.txt");

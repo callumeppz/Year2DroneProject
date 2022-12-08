@@ -3,7 +3,7 @@ package com.example.demo2;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
-public class DroneArena implements Serializable {
+public class DroneArena implements Serializable { // used in the saving function
 
     double xSize, ySize;
     ArrayList<MovingObstacle> allEDrones;
@@ -11,7 +11,7 @@ public class DroneArena implements Serializable {
     protected ArrayList<Obstacle> allEnDrones;
     protected ArrayList<Drone> allDrones;
     private ArrayList<Drone> DroneID;
-    Random rand = new Random();
+    Random rand = new Random(); // random
 
     DroneArena(double xS, double yS) {
         xSize = xS;
@@ -21,10 +21,13 @@ public class DroneArena implements Serializable {
         allEDrones = new ArrayList<MovingObstacle>();
         allEnDrones = new ArrayList<Obstacle>();
         setAllMeteorDrones(new ArrayList<MeteorStrike>());
-        DroneID = new ArrayList<Drone>();
+        DroneID = new ArrayList<Drone>(); // declaring arrays for entities
+        /**
+         *
+         */
     }
 
-    public void drawArena(MyCanvas mc) {
+    public void drawArena(MyCanvas mc) { // places the drones/entities onto the canvas
         for (FirstDrone b : allDrones) b.drawdrone(mc);
         for (FirstDrone b : allEDrones) b.drawdrone2(mc);
         for (FirstDrone b : allEnDrones) b.drawdrone2(mc);
@@ -33,7 +36,7 @@ public class DroneArena implements Serializable {
         for (FirstDrone b : getAllMeteorDrones()) b.drawdrone2(mc);
     }
 
-    public void AdjustDrone() {
+    public void AdjustDrone() { // adjusts the drones if hitting
         for (FirstDrone b : allDrones) {
             b.adjustdrone();
         }
@@ -48,7 +51,7 @@ public class DroneArena implements Serializable {
         }
     }
 
-    public void checkDrones() {
+    public void checkDrones() { // checks each of the drones individually, checks if they are colliding with other entities/walls
         for (FirstDrone Drone : allDrones) Drone.checkdrone(this);
         for (FirstDrone Drone : allEDrones) Drone.checkdrone(this);
         for (FirstDrone Drone : allEnDrones) Drone.checkdrone(this);
@@ -65,24 +68,22 @@ public class DroneArena implements Serializable {
      * @return
      */
 
-    public Object addDrone() {
+    public Object addDrone() { // function to add drone entities
         allDrones.add(new Drone(rand.nextInt(600), rand.nextInt(100, 450), 10, 55, 5));
         return null;
     }
 
-    public void addEDrone() {
+    public void addEDrone() { // function to add meteor entities
         allEDrones.add(new MovingObstacle(rand.nextInt(600), rand.nextInt(100,450), 10, 55, 5));
     }
 
-    public void addEnDrone() {
+    public void addEnDrone() { // function to add meteor entities
         allEnDrones.add(new Obstacle(rand.nextInt(600), rand.nextInt(100,450), 10, 55, 5));
     }
 
-    public void addMeteorDrone() {
+    public void addMeteorDrone() { // function to add meteor strike entities
         getAllMeteorDrones().add(new MeteorStrike(rand.nextInt(20), rand.nextInt(100,450), 10, 55, 5));
     }
-
-
 
     /**
      * @param x
@@ -92,15 +93,15 @@ public class DroneArena implements Serializable {
      * @param droneo
      * @return
      */
-    public double checkDroneAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
+    public double checkDroneAngle(double x, double y, double rad, double ang, FirstDrone droneo) { //collision function between drones and moving obstacles
         double ans = ang;
         if (allDrones.size() >= 1) {
             for (Drone Drone1 : allDrones) {
-                if (Drone1 != droneo && Drone1.hitting(x, y, 100, 55)) {
+                if (Drone1 != droneo && Drone1.hitting(x, y, 25, 25)) { // collision between drones
                     ang = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
                 }
                 if (allEDrones.size() >= 1) {
-                    for (MovingObstacle Drone2 : allEDrones) {
+                    for (MovingObstacle Drone2 : allEDrones) { // collision between drones and obstacles
                         if (Drone2 != droneo && Drone2.hitting(x, y, 50, 50)) {
                             ang = 180 * Math.atan2(y - Drone2.y, x - Drone2.x) / Math.PI;
                         }
@@ -108,50 +109,56 @@ public class DroneArena implements Serializable {
                 }
             }
         }
-        if (x > xSize - rad || x < rad) {
+        if (x > xSize - rad || x < rad) { // used for the wall collision, changes drone direction
             ang = 180 - ang;
         }
-
         if (y > ySize - rad || y < rad) {
             ang = -ang;
         }
         return ang;
-
     }
 
     public double checkObsAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
         double ans = ang;
-        int healthbar = 100;
+        int healthbar = 10;
         if (allDrones.size() >= 1) {
-            for (Drone Drone1 : allDrones) {
-                if (Drone1 != droneo && Drone1.hitting(x, y, 100, 55)) {
+            for (Drone Drone1 : allDrones) { // drones collision
+                if (Drone1 != droneo && Drone1.hitting(x, y, 50, 50)) {
                     ang = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
                 }
                 if (allEnDrones.size() >= 1) {
-                    for (Obstacle Drone2 : allEnDrones) {
+                    for (Obstacle Drone2 : allEnDrones) { // obstacle collision with drones
                         if (Drone2 != droneo && Drone2.hitting(x, y, 50, 50)) {
                             ang = 180 * Math.atan2(y - Drone2.y, x - Drone2.x) / Math.PI;
                         }
-
-                        if (Drone1.hitting(x, y, 100, 55) && Drone2.hitting(x, y, 50, 50)) {
+                        if (Drone1.hitting(x, y, 50, 50) && Drone2.hitting(x, y, 50, 50)) {
                             while (healthbar >= 1) {
                                 int healthbar2 = healthbar--;
-                                System.out.println(healthbar2);
+                                System.out.println(healthbar2); // healthbar feature, removes drones when hits 1
                                 if (healthbar2 <= 1) {
                                     System.out.println("Your Drone was destroyed");
-                                    allDrones.remove(Drone1);
+                                    if (allDrones.size() > 5) // if more than 1 drone on the map, obstacle will destroy
+                                    allDrones.remove(Drone1); // removes the drone, causes an error which needs to be worked on, but function works
                                 }
                             }
-                            break;
+                            break; // breaks the while loop
                         }
                     }
                 }
             }
         }
-        return ang;
+        return ang; // returns drone
     }
 
-    public double checkMeteorAngle(double x, double y, double rad, FirstDrone droneo) {
+    /**
+     *
+     * @param x
+     * @param y
+     * @param rad
+     * @param droneo
+     * @return
+     */
+    public double checkMeteorAngle(double x, double y, double rad, FirstDrone droneo) { // function used to provide collision physics for meteor strike
         double ans = rad;
         int healthbar = 100;
         if (getAllMeteorDrones().size() >= 1) {
@@ -161,13 +168,13 @@ public class DroneArena implements Serializable {
                 }
                 if (allDrones.size() >= 1) {
                     for (Drone Drone1 : allDrones) {
-                        if (Drone1 != droneo && Drone1.hitting(x, y, 100, 55)) {
+                        if (Drone1 != droneo && Drone1.hitting(x, y, 50, 50)) {
                             rad = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
                         }
                         if (Drone1.hitting(x, y, 100, 55) && Drone4.hitting(x, y, 50, 50)) {
                             while (healthbar >= 1) {
                                 int healthbar2 = healthbar--;
-                                System.out.println(healthbar2);
+                                System.out.println(healthbar2); // healthbar started
                                 if (healthbar2 <= 1) {
                                     System.out.println("Your Drone was destroyed");
                                 }
@@ -179,18 +186,12 @@ public class DroneArena implements Serializable {
         }
         return rad;
     }
-
     public ArrayList<MeteorStrike> getAllMeteorDrones() {
         return allMeteorDrones;
     }
-
     public void setAllMeteorDrones(ArrayList<MeteorStrike> allMeteorDrones) {
         this.allMeteorDrones = allMeteorDrones;
     }
-
-
-
-
 }
 
 

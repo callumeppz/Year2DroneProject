@@ -24,25 +24,27 @@ public class MyCanvas {
         yCanvasSize = ycs;
 
     }
+
     /**
      * @return xcanvas size
      */
     public int getXCanvasSize() {
         return xCanvasSize;
     }
+
     /**
      * @return ycanvas size
      */
     public int getYCanvasSize() {
         return yCanvasSize;
     }
+
     /**
      * clear the canvas
      */
     public void clearCanvas() {
-        gc.clearRect(0,  0,  xCanvasSize,  yCanvasSize);		// clear canvas
+        gc.clearRect(0, 0, xCanvasSize, yCanvasSize);        // clear canvas
     }
-
 
 
     public void showdrone(double x, double y, double rad) {
@@ -52,22 +54,12 @@ public class MyCanvas {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        gc.drawImage(droneimg, x-rad, y-rad, 100, 55);
+        gc.drawImage(droneimg, x - rad, y - rad, 100, 55);
     }
 
 
     public void showenemydrone(double x, double y, double rad) {
         gc.setFill(Color.GREY);
-        gc.fillArc(x-rad, y-rad, 50, 50, 0, 360, ArcType.ROUND);
-    }
-
-    public void showplayer(double x, double y, double rad) {
-        Image droneimg;
-        try {
-            droneimg = new Image(new FileInputStream("src/main/resources/drone.png"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        gc.drawImage(droneimg, x-rad, y-rad, 63, 34);
+        gc.fillArc(x - rad, y - rad, 50, 50, 0, 360, ArcType.ROUND);
     }
 }

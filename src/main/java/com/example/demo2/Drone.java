@@ -10,6 +10,15 @@ public class Drone extends FirstDrone {
     private int ID;
     public boolean isplayer;
 
+    /**
+     *
+     * @param ix
+     * @param iy
+     * @param ir
+     * @param ia
+     * @param is
+     */
+
     public Drone(int ix, int iy, double ir, double ia, double is) {
         super(ix, iy, ir);
         DroneAngle = ia;
@@ -41,18 +50,6 @@ public class Drone extends FirstDrone {
     /**
      * save info of drone on each line of string
      */
-    public String saveDrone() {
-        String save = "";
-        save += ID + "\n";
-        save += x + "\n";
-        save += y + "\n";
-        //extra lines where speed and angle added for drone
-        save += DroneSpeed + "\n";
-        save+= DroneAngle;
-
-        return save;
-
-    }
 
     public String toString() {
         return "Drone " + ID + " at " + String.format("%.0f",x) + "," + String.format("%.0f",y) + "\nwith angle " + String.format("%.2f",DroneAngle);

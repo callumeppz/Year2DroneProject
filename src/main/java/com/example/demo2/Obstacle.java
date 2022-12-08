@@ -6,11 +6,13 @@ public class Obstacle extends FirstDrone {
     double DroneAngle, DroneSpeed;
     static int idCount;
 
+
     private int ID;
     public Obstacle(double ix, double iy, double ir, double ia, double is) {
         super(ix, iy, ir);
         DroneAngle = ia;
         DroneSpeed = is;
+
     }
 
     @Override

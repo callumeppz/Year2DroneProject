@@ -8,6 +8,7 @@ public class MeteorStrike extends FirstDrone {
         super(ix, iy, ir);
         DroneAngle = ia;
         DroneSpeed = 7;
+
     }
 
 
@@ -25,6 +26,7 @@ public class MeteorStrike extends FirstDrone {
     public boolean hitting(double ox, double oy, double or, int i) {
 
         return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (63/2+63/2) * (32/2+32/2);
+
     }
 
 
