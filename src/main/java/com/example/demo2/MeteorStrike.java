@@ -10,15 +10,6 @@ public class MeteorStrike extends FirstDrone {
         DroneSpeed = 7;
     }
 
-    @Override
-    public String saveDrone() {
-        return null;
-    }
-
-    @Override
-    public boolean isHere(double x, double y) {
-        return false;
-    }
 
     protected void checkdrone(DroneArena b) {
         DroneAngle = b.checkMeteorAngle(x, y, rad, this);

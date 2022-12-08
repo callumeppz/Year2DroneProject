@@ -27,7 +27,6 @@ public abstract class FirstDrone implements Serializable {
     /**
      * save info of drone on each line of string
      */
-    public abstract String saveDrone();
 
     public String toString() {
         String toString3 = ("Drone ID:\t" + droneid);

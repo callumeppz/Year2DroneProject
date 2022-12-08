@@ -45,10 +45,7 @@ public class Obstacle extends FirstDrone {
     }
 
 
-    @Override
-    public String saveDrone() {
-        return null;
-    }
+
 
     public String toString() {
         return "Drone " + ID + " is at " + String.format("%.2f",x) + "," + String.format("%.2f",y) + " with angle " + String.format("%.2f",rad);

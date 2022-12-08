@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.*;
 import javafx.stage.Stage;
@@ -28,11 +29,13 @@ public class DroneInterface extends Application {
     private VBox rtPane;
     private static DroneArena arena;
 
+
+
     public void drawWorld () {
         Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, BLACK)};
         LinearGradient lngnt = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
         mc.gc.setFill(lngnt);
-        mc.gc.fillRect(15, 0, 3*mc.xCanvasSize, 3*mc.yCanvasSize);
+        mc.gc.fillRect(0, 0, 3*mc.xCanvasSize, 3*mc.yCanvasSize);
         arena.drawArena(mc);
     }
 
@@ -102,12 +105,30 @@ public class DroneInterface extends Application {
         });
 
         Alert E = new Alert(AlertType.NONE); // add obstacle button
-        Button btnAddEnemy = new Button("Add Moving\nObstacle");
+        Button btnAddEnemy = new Button("Add Moving\nAsteroid");
         btnAddEnemy.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 arena.addEDrone();
                 drawWorld();
+            }
+        });
+
+
+        Button btnAI = new Button("Drone 0\nManual");
+        btnAI.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Drone player = arena.allDrones.get(0);
+                player.isplayer = true;
+            }
+        });
+        Button btnAIoff = new Button("Drone 0\nAutomatic");
+        btnAIoff.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Drone player = arena.allDrones.get(0);
+                player.isplayer = false;
             }
         });
 
@@ -129,7 +150,7 @@ public class DroneInterface extends Application {
             }
         });
 
-        Button btnAddEn = new Button("Meteor Strike");
+        Button btnAddEn = new Button("Asteroid Strike");
         final Timer[] timer = {new Timer()};
 
         btnAddEn.setOnAction(new EventHandler<ActionEvent>() {
@@ -145,7 +166,7 @@ public class DroneInterface extends Application {
                 drawWorld();
             }
         });
-        Button btnStpEn = new Button("Stop Meteor\nStrike");
+        Button btnStpEn = new Button("Stop Asteroid\nStrike");
         btnStpEn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -155,7 +176,7 @@ public class DroneInterface extends Application {
         });
 
 
-        Button btnAddObs = new Button("Add Obstacle");
+        Button btnAddObs = new Button("Add Asteroid");
         btnAddObs.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -187,6 +208,9 @@ public class DroneInterface extends Application {
         btnmobsclr.setMinSize(100,60);
         btnSave.setMinSize(100,60);
         btnImport.setMinSize(100,60);
+        btnAI.setMinSize(100,60);
+        btnAIoff.setMinSize(100,60);
+
 
         btnStart.setTextFill(PURPLE); //setting the button colours
         btnStop.setTextFill(PURPLE);
@@ -200,8 +224,10 @@ public class DroneInterface extends Application {
         btnAddEn.setTextFill(PURPLE);
         btnmobsclr.setTextFill(PURPLE);
         btnobsclr.setTextFill(PURPLE);
+        btnAI.setTextFill(PURPLE);
+        btnAIoff.setTextFill(PURPLE);
 
-        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr, button2, btnSave, btnImport); // returns the buttons to the canvas
+        return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr, button2, btnSave, btnImport, btnAI, btnAIoff); // returns the buttons to the canvas
     }
 
     public void drawStatus() {
@@ -217,6 +243,7 @@ public class DroneInterface extends Application {
 
         primaryStage.setTitle("Space Drone Simulator (30010641)");
         BorderPane bp = new BorderPane();
+        Scene scene = new Scene(bp, 1500, 800);
         Group root = new Group();
         Canvas canvas = new Canvas( 1100, 600);
         root.getChildren().add( canvas );
@@ -228,6 +255,7 @@ public class DroneInterface extends Application {
             public void handle(long currentNanoTime) { // timer
                 arena.checkDrones();
                 arena.AdjustDrone();
+                userMove(scene);
                 drawWorld();
                 drawStatus();
             }
@@ -301,7 +329,6 @@ public class DroneInterface extends Application {
 
         Group buttons = new Group(button2);
         bp.setBottom(buttons);
-        Scene scene = new Scene(bp, 1500, 800);
         bp.prefHeightProperty().bind(scene.heightProperty());
         bp.prefWidthProperty().bind(scene.widthProperty());
         primaryStage.setScene(scene);
@@ -311,7 +338,27 @@ public class DroneInterface extends Application {
         Application.launch(args);			// launch the GUI
     }
 
+    public void userMove(Scene scene) {
+        Drone player = arena.allDrones.get(0);
 
+        scene.setOnKeyPressed((KeyEvent event) -> {
+            System.out.println(event.getText());
+            switch (event.getText()){
+                case "w":
+                    player.y-=10;
+                    break;
+                case "a":
+                    player.x-=10;
+                    break;
+                case "d":
+                    player.x+=10;
+                    break;
+                case "s":
+                    player.y+=10;
+                    break;
+            }
+        });
+    }
     static void export() { // saves/exports the simulation
         try {
             FileOutputStream outFile = new FileOutputStream("C:/callu/Drone/test.txt");

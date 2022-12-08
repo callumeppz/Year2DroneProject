@@ -8,6 +8,8 @@ public class Drone extends FirstDrone {
     static int idCount;
 
     private int ID;
+    public boolean isplayer;
+
     public Drone(int ix, int iy, double ir, double ia, double is) {
         super(ix, iy, ir);
         DroneAngle = ia;
@@ -20,8 +22,12 @@ public class Drone extends FirstDrone {
 
     public void adjustdrone() {
         double radAngle = DroneAngle*Math.PI/180;
-        x += DroneSpeed * Math.cos(radAngle);
-        y += DroneSpeed * Math.sin(radAngle);
+        if (!isplayer) {
+            x += DroneSpeed * Math.cos(radAngle);
+            y += DroneSpeed * Math.sin(radAngle);
+        }
+
+
     }
     protected void checkdrone(DroneArena b) {
         DroneAngle = b.checkDroneAngle(x, y, rad, DroneAngle, this);
@@ -32,7 +38,6 @@ public class Drone extends FirstDrone {
         return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (100/2+100/2) * (55/2+55/2);
     }
 
-    @Override
     /**
      * save info of drone on each line of string
      */

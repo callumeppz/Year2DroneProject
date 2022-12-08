@@ -28,6 +28,8 @@ public class DroneArena implements Serializable {
         for (FirstDrone b : allDrones) b.drawdrone(mc);
         for (FirstDrone b : allEDrones) b.drawdrone2(mc);
         for (FirstDrone b : allEnDrones) b.drawdrone2(mc);
+
+
         for (FirstDrone b : getAllMeteorDrones()) b.drawdrone2(mc);
     }
 
@@ -44,10 +46,6 @@ public class DroneArena implements Serializable {
         for (FirstDrone b : getAllMeteorDrones()) {
             b.adjustdrone();
         }
-    }
-
-    public ArrayList<Obstacle> getobstaclelist() {
-        return allEnDrones;
     }
 
     public void checkDrones() {
@@ -68,21 +66,22 @@ public class DroneArena implements Serializable {
      */
 
     public Object addDrone() {
-        allDrones.add(new Drone(rand.nextInt(600), rand.nextInt(350), 10, 55, 5));
+        allDrones.add(new Drone(rand.nextInt(600), rand.nextInt(100, 450), 10, 55, 5));
         return null;
     }
 
     public void addEDrone() {
-        allEDrones.add(new MovingObstacle(rand.nextInt(600), rand.nextInt(350), 10, 55, 5));
+        allEDrones.add(new MovingObstacle(rand.nextInt(600), rand.nextInt(100,450), 10, 55, 5));
     }
 
     public void addEnDrone() {
-        allEnDrones.add(new Obstacle(rand.nextInt(600), rand.nextInt(350), 10, 55, 5));
+        allEnDrones.add(new Obstacle(rand.nextInt(600), rand.nextInt(100,450), 10, 55, 5));
     }
 
     public void addMeteorDrone() {
-        getAllMeteorDrones().add(new MeteorStrike(rand.nextInt(20), rand.nextInt(400), 10, 55, 5));
+        getAllMeteorDrones().add(new MeteorStrike(rand.nextInt(20), rand.nextInt(100,450), 10, 55, 5));
     }
+
 
 
     /**

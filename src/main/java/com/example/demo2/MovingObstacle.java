@@ -36,19 +36,13 @@ public class MovingObstacle extends FirstDrone {
         idCount = 0;
     }
 
-    @Override
-    public String saveDrone() {
-        return null;
-    }
+
 
     public String toString() {
         return "Drone " + ID + " is at " + String.format("%.2f",x) + "," + String.format("%.2f",y) + " with angle " + String.format("%.2f",rad);
     }
 
-    @Override
-    public boolean isHere(double x, double y) {
-        return false;
-    }
+
 
     /**
      * allows setting of ID
