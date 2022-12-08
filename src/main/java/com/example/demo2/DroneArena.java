@@ -74,16 +74,36 @@ public class DroneArena implements Serializable { // used in the saving function
     }
 
     public void addEDrone() { // function to add meteor entities
-        allEDrones.add(new MovingObstacle(rand.nextInt(600), rand.nextInt(100,450), 10, 55, 5));
+        allEDrones.add(new MovingObstacle(rand.nextInt(600), rand.nextInt(100, 450), 10, 55, 5));
     }
 
     public void addEnDrone() { // function to add meteor entities
-        allEnDrones.add(new Obstacle(rand.nextInt(600), rand.nextInt(100,450), 10, 55, 5));
+        allEnDrones.add(new Obstacle(rand.nextInt(600), rand.nextInt(100, 450), 10, 55, 5));
     }
 
     public void addMeteorDrone() { // function to add meteor strike entities
-        getAllMeteorDrones().add(new MeteorStrike(rand.nextInt(20), rand.nextInt(100,450), 10, 55, 5));
+        getAllMeteorDrones().add(new MeteorStrike(rand.nextInt(20), rand.nextInt(100, 450), 10, 55, 5));
     }
+
+
+    public boolean checkifhit(Drone drone) {
+        boolean ans = false;
+        for (Drone drone1 : allDrones) {
+            if (drone1.hitting(drone1.x, drone1.y, drone1.rad, drone1.dronehealth)) {
+            ans = true;
+        }
+    }
+    return ans;
+}
+
+    public boolean checkifalive(Drone drone) {
+        boolean ans = true;
+        if(drone.health <= 0) {
+            ans=false;
+        }
+        return ans;
+    }
+
 
     /**
      * @param x
@@ -117,6 +137,8 @@ public class DroneArena implements Serializable { // used in the saving function
         }
         return ang;
     }
+
+
 
     public double checkObsAngle(double x, double y, double rad, double ang, FirstDrone droneo) {
         double ans = ang;

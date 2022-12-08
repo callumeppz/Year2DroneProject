@@ -46,7 +46,15 @@ public class MyCanvas {
         gc.clearRect(0, 0, xCanvasSize, yCanvasSize);        // clear canvas
     }
 
-
+public void healthbar(double x, double y, double health, double healthperc) {
+        if (health <= 10) {
+            gc.setFill(Color.BROWN);
+            gc.rect(x - 50, y -50,100,10);
+        }
+    if (health <= 100) {
+        gc.setFill(Color.GREEN);
+    }
+}
     public void showdrone(double x, double y, double rad) {
         Image droneimg;
         try {

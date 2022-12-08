@@ -171,6 +171,7 @@ public class DroneInterface extends Application {
                     }
                 }, 0, 400);
                 drawWorld();
+
             }
         });
         Button btnStpEn = new Button("Stop Asteroid\nStrike");
@@ -290,6 +291,7 @@ public class DroneInterface extends Application {
         arena = new DroneArena(1050, 600);
 
 
+
         timer = new AnimationTimer() {
             public void handle(long currentNanoTime) { // timer
                 arena.checkDrones();
@@ -297,6 +299,7 @@ public class DroneInterface extends Application {
                 userMove(scene);
                 drawWorld();
                 drawStatus();
+
             }
         };
 
@@ -365,6 +368,7 @@ public class DroneInterface extends Application {
              }
          });
 
+
          Button button4 = new Button();
          button4.setText("exit");
          button4.setOnAction(new EventHandler<ActionEvent>() {
@@ -373,6 +377,7 @@ public class DroneInterface extends Application {
                  System.exit(0);
              }
          });
+
 
 
         Group buttons = new Group(button2, button3); // starting screen edited using css
@@ -400,8 +405,12 @@ public class DroneInterface extends Application {
         primaryStage.show();
     }
 
+    /**
+     *
+     * @param scene
+     */
 
-    public void userMove(Scene scene) {
+    public void userMove(Scene scene) { // custom movement of a single drone using keyboard keys
         Drone player = arena.allDrones.get(0);
 
         scene.setOnKeyPressed((KeyEvent event) -> {
@@ -424,6 +433,10 @@ public class DroneInterface extends Application {
         });
     }
 
+    /**
+     *
+     */
+
     static void export() { // saves/exports the simulation
         try {
             FileOutputStream outFile = new FileOutputStream("C:/callu/Drone/test.txt");
@@ -435,6 +448,9 @@ public class DroneInterface extends Application {
         }
     }
 
+    /**
+     *
+     */
     public static void importGame() { // imports/loads
         File inFile = new File("C:/callu/Drone/test.txt");
         try {

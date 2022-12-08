@@ -3,6 +3,7 @@ package com.example.demo2;
 
 
 public class Drone extends FirstDrone {
+    public int health = 100;
     double DroneAngle, DroneSpeed;
     int dronehealth;
     static int idCount;
@@ -35,6 +36,7 @@ public class Drone extends FirstDrone {
             x += DroneSpeed * Math.cos(radAngle);
             y += DroneSpeed * Math.sin(radAngle);
         }
+
 
 
     }

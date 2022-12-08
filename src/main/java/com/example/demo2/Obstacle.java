@@ -12,6 +12,9 @@ public class Obstacle extends FirstDrone {
         super(ix, iy, ir);
         DroneAngle = ia;
         DroneSpeed = is;
+        /**
+         *
+         */
 
     }
 
@@ -23,6 +26,9 @@ public class Obstacle extends FirstDrone {
         double right = x+80+80*2;
         if((x <= right && x >= left) && (y <= top && y >= bottom)) { //check if there
             return true;
+            /**
+             *
+             */
         }
 
         return false;
@@ -35,6 +41,9 @@ public class Obstacle extends FirstDrone {
     @Override
     protected void checkdrone(DroneArena b) {
         DroneAngle = b.checkObsAngle(x, y, rad, DroneAngle, this);
+        /**
+         *
+         */
     }
 
     @Override
@@ -44,6 +53,9 @@ public class Obstacle extends FirstDrone {
 
     public boolean hitting(double ox, double oy, double or, int i) {
         return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (63/2+63/2) * (32/2+32/2);
+        /**
+         *
+         */
     }
 
 
