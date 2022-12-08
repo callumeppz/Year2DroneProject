@@ -32,25 +32,28 @@ public class DroneInterface extends Application {
 
 
 
-    public void drawWorld () {
-        Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, BLACK)};
+    public void drawWorld () { // used to draw the coloured box the drones spawn in (arena)
+        Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, BLACK)}; // sets a gradient colour
         LinearGradient lngnt = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
-        mc.gc.setFill(lngnt);
-        mc.gc.fillRect(0, 0, 3*mc.xCanvasSize, 3*mc.yCanvasSize);
-        arena.drawArena(mc);
+        mc.gc.setFill(lngnt); // fills the box
+        mc.gc.fillRect(0, 0, 3*mc.xCanvasSize, 3*mc.yCanvasSize); // set to 3 times the canvas size
+        arena.drawArena(mc); // draws to the screen
     }
 
+    ////////////////////////////
+    //          buttons       //
+    ////////////////////////////
 
-    private HBox setButtons() {
+    private HBox setButtons() { // horizontal box for the buttons to be placed in
         Alert S = new Alert(AlertType.NONE);
         Button btnStart = new Button("Start"); // begins and displays a message
         btnStart.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                timer.start();
+                timer.start(); // begins the timer
                 S.setAlertType(AlertType.INFORMATION);
                 S.setContentText("Drone Animation Started!");
-                S.show();
+                S.show(); // message shown
                 drawWorld();
             }
         });
@@ -60,14 +63,14 @@ public class DroneInterface extends Application {
         btnStop.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                timer.stop();
+                timer.stop(); // stops/pauses the timer
                 P.setAlertType(AlertType.INFORMATION);
                 P.setContentText("Drone Animation Paused!");
-                P.show();
+                P.show(); // shows a message to the screen to let the user know
             }
         });
 
-        Alert a = new Alert(AlertType.NONE); // button to add a drone
+        Alert a = new Alert(AlertType.NONE); // button to add a drone // alerts the user
         Button btnAdd = new Button("Add Drone");
         final int[] droneid = {1};
         btnAdd.setOnAction(new EventHandler<ActionEvent>() {
@@ -76,37 +79,36 @@ public class DroneInterface extends Application {
                 String toString3 = ("Drone ID %s\t" + droneid[0]);
                 Label V = new Label(toString3);
                 rtPane.getChildren().add(V);
-                droneid[0]++;
-                arena.addDrone();
-                drawWorld();
+                droneid[0]++; // when button is pressed droneID increases
+                arena.addDrone(); // adds the drone to the arena
+                drawWorld(); // adds drone to canvas
             }
         });
-
 
         Button btnclr = new Button("Remove\nDrone"); // removes a drone
         btnclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (arena.allDrones.size() > 1) {
-                    arena.allDrones.remove(0);
+                if (arena.allDrones.size() > 1) { // if there is more than 1 drones on the screen, do this
+                    arena.allDrones.remove(1); // removes the second drone in the set (leaving drone 0)
                 }
                 }
         });
-        Button btnobsclr = new Button("Remove Moving\nAsteroid"); // removes a drone
+        Button btnobsclr = new Button("Remove Moving\nAsteroid"); // removes a moving asteroid
         btnobsclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (arena.allEDrones.size() >= 1) {
-                    arena.allEDrones.remove(0);
+                if (arena.allEDrones.size() >= 1) { // if there is 1 or more asteroids on the screen, do this
+                    arena.allEDrones.remove(0); // removes an asteroid from the array
                 }
             }
         });
-        Button btnmobsclr = new Button("Remove\nAsteroid"); // removes a drone
+        Button btnmobsclr = new Button("Remove\nAsteroid"); // removes a asteroid
         btnmobsclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (arena.allEnDrones.size() >= 1) {
-                    arena.allEnDrones.remove(0);
+                if (arena.allEnDrones.size() >= 1) { // if there is 1 or more asteroids on the screen, do this
+                    arena.allEnDrones.remove(0); // removes an asteroid from the array
                 }
             }
         });
@@ -116,70 +118,69 @@ public class DroneInterface extends Application {
         btnAddEnemy.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                arena.addEDrone();
-                drawWorld();
+                arena.addEDrone(); // adds a moving asteroid
+                drawWorld(); // adds entitiy to te canvas
             }
         });
 
 
-        Button btnAI = new Button("Drone 0\nManual");
+        Button btnAI = new Button("Drone 0\nManual"); // used to set a drone to manual movement
         btnAI.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Drone player = arena.allDrones.get(0);
-                player.isplayer = true;
+                Drone player = arena.allDrones.get(0); // gets the first drone currently spawned
+                player.isplayer = true; // starts the player movement function
             }
         });
-        Button btnAIoff = new Button("Drone 0\nAutomatic");
+        Button btnAIoff = new Button("Drone 0\nAutomatic"); // automates drone 0
         btnAIoff.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Drone player = arena.allDrones.get(0);
-                player.isplayer = false;
+                Drone player = arena.allDrones.get(0); // gets the first drone currently spawned
+                player.isplayer = false; // sets is player to false, causing automation physics to function
             }
         });
 
 
-        Button btnSave = new Button("Save");
+        Button btnSave = new Button("Save"); // save button
         btnSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 export();
-            }
+            } // saves the current state of the canvas to a txt file
         });
 
 
-        Button btnImport = new Button("load");
+        Button btnImport = new Button("load"); // load button
         btnImport.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 importGame();
-            }
+            } // used to load a previous save, stored as txt
         });
 
-        Button btnAddEn = new Button("Asteroid\nStrike");
+        Button btnAddEn = new Button("Asteroid\nStrike"); // button used to start a asteroid strike
         final Timer[] timer = {new Timer()};
 
         btnAddEn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                timer[0] = new Timer();
+                timer[0] = new Timer(); // creates a timer
                 timer[0].schedule(new TimerTask() {
                     @Override
                     public void run() {
                         arena.addMeteorDrone();
                     }
-                }, 0, 400);
-                drawWorld();
-
+                }, 0, 400); // timer spawns an asteroid every 400 milliseconds
+                drawWorld(); // draws asteroids to the canvas
             }
         });
-        Button btnStpEn = new Button("Stop Asteroid\nStrike");
+        Button btnStpEn = new Button("Stop Asteroid\nStrike"); // stops the asteroid strike
         btnStpEn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                    timer[0].cancel();
-                    drawWorld();
+                    timer[0].cancel(); // cancels the timer
+                    drawWorld(); // removes asteroids
                 }
         });
 
@@ -218,6 +219,7 @@ public class DroneInterface extends Application {
         btnImport.setMinSize(85,60);
         btnAI.setMinSize(85,60);
         btnAIoff.setMinSize(85,60);
+
 
 
         btnStart.setStyle("-fx-text-fill: purple;"+
@@ -267,7 +269,7 @@ public class DroneInterface extends Application {
                 "-fx-font: normal bold 10px 'Lucida Console';");
 
         return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr, button2, btnSave, btnImport, btnAI, btnAIoff); // returns the buttons to the canvas
-    }
+    } // adds all the buttons to a hbox which is then used in borderpane
 
     public void drawStatus() {
         rtPane.getChildren().clear();
@@ -277,6 +279,10 @@ public class DroneInterface extends Application {
             rtPane.getChildren().add(l);
         }
     }
+
+    ////////////////////////////
+    //          Start loop    //
+    ////////////////////////////
      @Override
     public void start(Stage primaryStage) throws Exception { // main loop
 
@@ -291,6 +297,9 @@ public class DroneInterface extends Application {
         arena = new DroneArena(1050, 600);
 
 
+         ////////////////////////////
+         //          timer         //
+         ////////////////////////////
 
         timer = new AnimationTimer() {
             public void handle(long currentNanoTime) { // timer
@@ -327,8 +336,11 @@ public class DroneInterface extends Application {
              }
          });
 
+         ////////////////////////////
+         //          GUI           //
+         ////////////////////////////
+
         MenuBar menuBar = new MenuBar();
-            Menu savemenu = new Menu("Save");
             MenuItem mExport = new MenuItem("Export");
             mExport.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -354,35 +366,34 @@ public class DroneInterface extends Application {
         bp.setPadding(new Insets(0, 20, 20, 0));
         bp.setRight(rtPane);
 
-        Button button2 = new Button();
-        button2.setText("start");
-        button2.setOnAction(new EventHandler<ActionEvent>() {
+        Button start = new Button();
+        start.setText("start");
+        start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Stop[] stops = new Stop[] { new Stop(0, INDIGO), new Stop(1, ORANGE)};
                 LinearGradient lngnt = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
                 bp.setBottom(setButtons());
                 bp.setBackground(Background.fill(MEDIUMPURPLE));
-                button2.setVisible(false);
+                start.setVisible(false);
                 drawWorld();
             }
         });
 
-         Button button3 = new Button();
-         button3.setText("load");
-         button3.setOnAction(new EventHandler<ActionEvent>() {
+         Button load = new Button();
+         load.setText("load");
+         load.setOnAction(new EventHandler<ActionEvent>() {
              @Override
              public void handle(ActionEvent actionEvent) {
                 importGame();
-                button3.setVisible(false);
+                load.setVisible(false);
 
              }
          });
 
-
-         Button button4 = new Button();
-         button4.setText("exit");
-         button4.setOnAction(new EventHandler<ActionEvent>() {
+         Button exit = new Button();
+         exit.setText("exit");
+         exit.setOnAction(new EventHandler<ActionEvent>() {
              @Override
              public void handle(ActionEvent actionEvent) {
                  System.exit(0);
@@ -391,23 +402,23 @@ public class DroneInterface extends Application {
 
 
 
-        Group buttons = new Group(button2, button3); // starting screen edited using css
-        button2.setMinSize(150,30);
-        button3.setMinSize(150,30);
-        button4.setMinSize(150,30);
-        button2.setStyle("-fx-text-fill: purple;"+
+        Group buttons = new Group(start, load); // starting screen edited using css
+        start.setMinSize(150,30);
+        load.setMinSize(150,30);
+        exit.setMinSize(150,30);
+        start.setStyle("-fx-text-fill: purple;"+
                 "-fx-background-color: Grey;"+
                 "-fx-font: normal bold 25px 'Lucida Console';");
-         button3.setStyle("-fx-text-fill: purple;"+
+         load.setStyle("-fx-text-fill: purple;"+
                  "-fx-background-color: Grey;"+
                  "-fx-font: normal bold 25px 'Lucida Console';");
-         button4.setStyle("-fx-text-fill: purple;"+
+         exit.setStyle("-fx-text-fill: purple;"+
                  "-fx-background-color: Grey;"+
                  "-fx-font: normal bold 25px 'Lucida Console';");
         HBox hbox = new HBox();
-        hbox.getChildren().add(button2);
-        hbox.getChildren().add(button3);
-        hbox.getChildren().add(button4);
+        hbox.getChildren().add(start);
+        hbox.getChildren().add(load);
+        hbox.getChildren().add(exit);
         bp.setBottom(hbox);
 
         bp.prefHeightProperty().bind(scene.heightProperty());
@@ -428,7 +439,7 @@ public class DroneInterface extends Application {
             System.out.println(event.getText());
             switch (event.getText()){
                 case "w":
-                    player.y-=10;
+                    player.y-=10; // when player presses W drone moves 10
                     break;
                 case "a":
                     player.x-=10;
@@ -450,7 +461,7 @@ public class DroneInterface extends Application {
 
     static void export() { // saves/exports the simulation
         try {
-            FileOutputStream outFile = new FileOutputStream("/Users/callumapps/Desktop/drone/drone.txt");
+            FileOutputStream outFile = new FileOutputStream("/Users/callumapps/Desktop/drone/drone.txt"); // saves to this specific path name
             ObjectOutputStream outStream = new ObjectOutputStream(outFile);
             outStream.writeObject(arena);
             outStream.close();
@@ -463,7 +474,7 @@ public class DroneInterface extends Application {
      *
      */
     public static void importGame() { // imports/loads
-        File inFile = new File("/Users/callumapps/Desktop/drone/drone.txt");
+        File inFile = new File("/Users/callumapps/Desktop/drone/drone.txt"); // loads from this specific path name
         try {
             FileInputStream inStream = new FileInputStream(inFile);
             ObjectInputStream inObjectStream = new ObjectInputStream(inStream);

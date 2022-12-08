@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 public class DroneArena implements Serializable { // used in the saving function
+
     /**
      * TO DO - add health bar
      */
@@ -34,8 +35,6 @@ public class DroneArena implements Serializable { // used in the saving function
         for (FirstDrone b : allDrones) b.drawdrone(mc);
         for (FirstDrone b : allEDrones) b.drawdrone2(mc);
         for (FirstDrone b : allEnDrones) b.drawdrone2(mc);
-
-
         for (FirstDrone b : getAllMeteorDrones()) b.drawdrone2(mc);
     }
 
@@ -89,7 +88,7 @@ public class DroneArena implements Serializable { // used in the saving function
     }
 
 
-    public boolean checkifhit(Drone drone) {
+    public boolean checkifhit(Drone drone) { // ignore for now WIP
         boolean ans = false;
         for (Drone drone1 : allDrones) {
             if (drone1.hitting(drone1.x, drone1.y, drone1.rad, drone1.dronehealth)) {
@@ -99,7 +98,7 @@ public class DroneArena implements Serializable { // used in the saving function
     return ans;
 }
 
-    public boolean checkifalive(Drone drone) {
+    public boolean checkifalive(Drone drone) { // ignore for now WIP
         boolean ans = true;
         if(drone.health <= 0) {
             ans=false;
@@ -120,7 +119,7 @@ public class DroneArena implements Serializable { // used in the saving function
         double ans = ang;
         if (allDrones.size() >= 1) {
             for (Drone Drone1 : allDrones) {
-                if (Drone1 != droneo && Drone1.hitting(x, y, 25, 25)) { // collision between drones
+                if (Drone1 != droneo && Drone1.hitting(x, y, 25, 25)) { // if conditional collision between drones
                     ang = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
                 }
                 if (allEDrones.size() >= 1) {
@@ -133,12 +132,12 @@ public class DroneArena implements Serializable { // used in the saving function
             }
         }
         if (x > xSize - rad || x < rad) { // used for the wall collision, changes drone direction
-            ang = 180 - ang;
+            ang = 180 - ang; // changes drone angle
         }
         if (y > ySize - rad || y < rad) {
             ang = -ang;
         }
-        return ang;
+        return ang; // returns drone angle
     }
 
 

@@ -17,13 +17,12 @@ public abstract class FirstDrone implements Serializable {
     }
     final int[] droneid = {1};
 
-    public void drawdrone(MyCanvas mc) {
+    public void drawdrone(MyCanvas mc) { // pulls the image of the drone from MyCanvas
         mc.showdrone(x, y, rad);
-
     }
-    public void drawhealth(MyCanvas mc) {
-        mc.healthbar(x, y, rad, 100);
 
+    public void drawhealth(MyCanvas mc) { // ignore for now
+        mc.healthbar(x, y, rad, 100);
     }
     public void drawdrone2(MyCanvas mc) {
         mc.showenemydrone(x, y, rad);
@@ -40,26 +39,10 @@ public abstract class FirstDrone implements Serializable {
        return toString3 + " at " + Math.round(x) + ", " + Math.round(y);
     }
 
-    public boolean isHere(double x, double y)
-    {
-        //include size of entity
-        double top = y+80;
-        double bottom = y-80;
-        double left = x-80;
-        double right = x+80;
-        //check if there
-        if((x < right && y > left) && (x < top && y > bottom))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
 
     protected abstract void checkdrone(DroneArena b);
     protected abstract void adjustdrone();
-    public boolean hitting(double ox, double oy, double or, int i) {
+    public boolean hitting(double ox, double oy, double or, int i) { // used in the collision function, changes objects direction
         return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (or/2+i/2)*(or/2+i/2);
     }
 }

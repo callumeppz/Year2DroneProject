@@ -18,22 +18,6 @@ public class Obstacle extends FirstDrone {
 
     }
 
-    @Override
-    public boolean isHere(double x, double y) {
-        double top = y+80+80*2;
-        double bottom = y-80-80*2;
-        double left = x-80-80*2;
-        double right = x+80+80*2;
-        if((x <= right && x >= left) && (y <= top && y >= bottom)) { //check if there
-            return true;
-            /**
-             *
-             */
-        }
-
-        return false;
-    }
-
     protected String getStrType() {
         return "Drone";
     }
