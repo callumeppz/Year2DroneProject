@@ -24,11 +24,11 @@ import javafx.stage.Stage;
 import static javafx.scene.paint.Color.*;
 import static javafx.scene.paint.Color.BEIGE;
 
-public class DroneInterface extends Application {
-    private MyCanvas mc;
-    private AnimationTimer timer;
-    private VBox rtPane;
-    private static DroneArena arena;
+public class DroneInterface extends Application { // parent class
+    private MyCanvas mc; // implements canvas class
+    private AnimationTimer timer; // declares timer
+    private VBox rtPane; // verticle box for the coordinates and drone iD
+    private static DroneArena arena; // delcares arena class
 
 
 
@@ -266,10 +266,10 @@ public class DroneInterface extends Application {
                 "-fx-font: normal bold 10px 'Lucida Console';");
         btnStpEn.setStyle("-fx-text-fill: purple;"+
                 "-fx-background-color: Grey;"+
-                "-fx-font: normal bold 10px 'Lucida Console';");
+                "-fx-font: normal bold 10px 'Lucida Console';"); // using css, needs to be improved to look nicer
 
         /**
-         * all buttons on the scene are declared here
+         * all buttons on the scene are declared here, css attempted to make the buttons look nicer
          */
 
         return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr, button2, btnSave, btnImport, btnAI, btnAIoff); // returns the buttons to the canvas
@@ -299,6 +299,16 @@ public class DroneInterface extends Application {
         bp.setLeft(root);
         mc = new MyCanvas(canvas.getGraphicsContext2D(), 700, 600, PURPLE);
         arena = new DroneArena(1050, 600);
+         Menu startstop = new Menu("Start/Stop");
+
+         MenuItem Start = new MenuItem("Start");
+         Start.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent actionEvent) {
+                 timer.start(); // begins the timer
+                 drawWorld();
+             }
+         });
 
 
          ////////////////////////////
@@ -323,6 +333,7 @@ public class DroneInterface extends Application {
         Alert X = new Alert(AlertType.INFORMATION); //Popups created for menubar
 
         Menu filemenu = new Menu("File");
+
         MenuItem About = new MenuItem("About");
         About.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -332,6 +343,15 @@ public class DroneInterface extends Application {
                 X.show();
             }
         });
+
+         MenuItem Stop = new MenuItem("Stop"); // attempt at stop menuitem
+         Start.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent actionEvent) {
+                 timer.stop(); // begins the timer
+             }
+         });
+
          Alert I = new Alert(AlertType.INFORMATION);
          MenuItem Info = new MenuItem("Info");
          Info.setOnAction(new EventHandler<ActionEvent>() {
@@ -365,8 +385,8 @@ public class DroneInterface extends Application {
          });
 
         filemenu.getItems().addAll(About, Info, mExport, mImport);
-
-            menuBar.getMenus().addAll(filemenu);
+         startstop.getItems().addAll(Start, Stop);
+            menuBar.getMenus().addAll(filemenu, startstop );
 
         rtPane = new VBox();
         bp.setTop(menuBar);

@@ -34,9 +34,8 @@ public class Obstacle extends FirstDrone {
     protected void adjustdrone() {
 
     }
-
     public boolean hitting(double ox, double oy, double or, int i) {
-        return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (63/2+63/2) * (32/2+32/2);
+        return (ox-x)*(ox-x) + (oy-y)*(oy-y) < (63/2+63/2) * (32/2+32/2); //used within the collision function
         /**
          *
          */

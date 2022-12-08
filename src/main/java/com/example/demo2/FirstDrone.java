@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class FirstDrone implements Serializable {
+public abstract class FirstDrone implements Serializable { // seriliazable for saving and loading
     public double x, y, rad;
 
     FirstDrone(double ix, double iy, double ir) {
