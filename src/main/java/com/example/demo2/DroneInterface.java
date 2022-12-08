@@ -87,7 +87,7 @@ public class DroneInterface extends Application {
         btnclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (arena.allDrones.size() >= 1) {
+                if (arena.allDrones.size() > 1) {
                     arena.allDrones.remove(0);
                 }
                 }
@@ -286,7 +286,7 @@ public class DroneInterface extends Application {
         Canvas canvas = new Canvas( 1100, 600);
         root.getChildren().add( canvas );
         bp.setLeft(root);
-        mc = new MyCanvas(canvas.getGraphicsContext2D(), 700, 600, BEIGE);
+        mc = new MyCanvas(canvas.getGraphicsContext2D(), 700, 600, PURPLE);
         arena = new DroneArena(1050, 600);
 
 
@@ -333,21 +333,7 @@ public class DroneInterface extends Application {
 
         filemenu.getItems().addAll(About, mExport, mImport);
 
-            Menu mTest = new Menu("Save/Load");
-
-            MenuItem mTest1 = new MenuItem("Save");
-            mExport.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    export();
-                }
-            });
-            MenuItem mTest2 = new MenuItem("Load");
-            mImport.setOnAction(actionEvent -> {importGame();
-            });
-
-            mTest.getItems().addAll(mTest1, mTest2);
-            menuBar.getMenus().addAll(filemenu, mTest);
+            menuBar.getMenus().addAll(filemenu);
 
         rtPane = new VBox();
         bp.setTop(menuBar);
@@ -413,9 +399,7 @@ public class DroneInterface extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    public static void main(String[] args) {
-        Application.launch(args);			// launch the GUI
-    }
+
 
     public void userMove(Scene scene) {
         Drone player = arena.allDrones.get(0);
