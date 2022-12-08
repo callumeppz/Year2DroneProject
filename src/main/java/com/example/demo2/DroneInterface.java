@@ -87,7 +87,7 @@ public class DroneInterface extends Application {
         btnclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (arena.allDrones.size() > 1) {
+                if (arena.allDrones.size() >= 1) {
                     arena.allDrones.remove(0);
                 }
                 }
@@ -96,7 +96,7 @@ public class DroneInterface extends Application {
         btnobsclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (arena.allEDrones.size() > 1) {
+                if (arena.allEDrones.size() >= 1) {
                     arena.allEDrones.remove(0);
                 }
             }
@@ -105,7 +105,7 @@ public class DroneInterface extends Application {
         btnmobsclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (arena.allEnDrones.size() > 1) {
+                if (arena.allEnDrones.size() >= 1) {
                     arena.allEnDrones.remove(0);
                 }
             }
@@ -219,20 +219,51 @@ public class DroneInterface extends Application {
         btnAIoff.setMinSize(100,60);
 
 
-        btnStart.setTextFill(PURPLE); //setting the button colours
-        btnStop.setTextFill(PURPLE);
-        btnAdd.setTextFill(PURPLE);
-        btnAddEnemy.setTextFill(PURPLE);
-        button2.setTextFill(PURPLE);
-        btnAddObs.setTextFill(PURPLE);
-        btnclr.setTextFill(PURPLE);
-        btnAddObs.setTextFill(PURPLE);
-        btnStpEn.setTextFill(PURPLE);
-        btnAddEn.setTextFill(PURPLE);
-        btnmobsclr.setTextFill(PURPLE);
-        btnobsclr.setTextFill(PURPLE);
-        btnAI.setTextFill(PURPLE);
-        btnAIoff.setTextFill(PURPLE);
+        btnStart.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnStop.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnAdd.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnAddEnemy.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnAddObs.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnAddEn.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 7px 'Lucida Console';");
+        btnclr.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnmobsclr.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnobsclr.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        button2.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnSave.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnImport.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnAI.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnAIoff.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
+        btnStpEn.setStyle("-fx-text-fill: purple;"+
+                "-fx-background-color: Grey;"+
+                "-fx-font: normal bold 10px 'Lucida Console';");
 
         return new HBox(btnStart, btnStop, btnAdd, btnAddEnemy, btnAddObs, btnAddEn, btnStpEn, btnclr, btnmobsclr, btnobsclr, button2, btnSave, btnImport, btnAI, btnAIoff); // returns the buttons to the canvas
     }
