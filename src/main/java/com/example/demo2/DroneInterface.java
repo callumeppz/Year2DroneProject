@@ -304,7 +304,8 @@ public class DroneInterface extends Application {
         };
 
 
-        Alert X = new Alert(AlertType.NONE);
+        Alert X = new Alert(AlertType.INFORMATION); //Popups created for menubar
+
         Menu filemenu = new Menu("File");
         MenuItem About = new MenuItem("About");
         About.setOnAction(new EventHandler<ActionEvent>() {
@@ -315,6 +316,16 @@ public class DroneInterface extends Application {
                 X.show();
             }
         });
+         Alert I = new Alert(AlertType.INFORMATION);
+         MenuItem Info = new MenuItem("Info");
+         Info.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent actionEvent) {
+                 I.setAlertType(AlertType.INFORMATION);
+                 I.setContentText("Add more than one drone to turn on collision damage with the Asteroids.");
+                 I.show();
+             }
+         });
 
         MenuBar menuBar = new MenuBar();
             Menu savemenu = new Menu("Save");
@@ -334,7 +345,7 @@ public class DroneInterface extends Application {
              }
          });
 
-        filemenu.getItems().addAll(About, mExport, mImport);
+        filemenu.getItems().addAll(About, Info, mExport, mImport);
 
             menuBar.getMenus().addAll(filemenu);
 

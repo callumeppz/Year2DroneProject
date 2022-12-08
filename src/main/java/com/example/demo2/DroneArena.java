@@ -192,19 +192,16 @@ public class DroneArena implements Serializable { // used in the saving function
                         if (Drone1 != droneo && Drone1.hitting(x, y, 50, 50)) {
                             rad = 180 * Math.atan2(y - Drone1.y, x - Drone1.x) / Math.PI;
                         }
-                        if (Drone1.hitting(x, y, 100, 55) && Drone4.hitting(x, y, 50, 50)) {
-                            while (healthbar >= 1) {
-                                int healthbar2 = healthbar--;
-                                System.out.println(healthbar2); // healthbar started
-                                if (healthbar2 <= 1) {
-                                    System.out.println("Your Drone was destroyed");
-                                }
-                            }
+                        if (Drone1.hitting(x, y, 50, 50) && Drone4.hitting(x, y, 50, 50) && allDrones.size() > 1) {
+                            // if more than 1 drone on the map, obstacle will destroy
+                            System.out.println("Your Drone was destroyed");
+                            allDrones.remove(Drone1); // removes the drone, causes an error which needs to be worked on, but function works
                         }
                     }
-                }
+                    break; // breaks the while loop
+                        }
+                    }
             }
-        }
         return rad;
     }
     public ArrayList<MeteorStrike> getAllMeteorDrones() {
