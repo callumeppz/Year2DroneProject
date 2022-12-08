@@ -87,21 +87,27 @@ public class DroneInterface extends Application {
         btnclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               arena.allDrones.remove(0);
+                if (arena.allDrones.size() > 1) {
+                    arena.allDrones.remove(0);
+                }
                 }
         });
         Button btnobsclr = new Button("Remove Moving\nAsteroid"); // removes a drone
         btnobsclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                arena.allEDrones.remove(0);
+                if (arena.allEDrones.size() > 1) {
+                    arena.allEDrones.remove(0);
+                }
             }
         });
         Button btnmobsclr = new Button("Remove Asteroid"); // removes a drone
         btnmobsclr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                arena.allEnDrones.remove(0);
+                if (arena.allEnDrones.size() > 1) {
+                    arena.allEnDrones.remove(0);
+                }
             }
         });
 
@@ -358,16 +364,13 @@ public class DroneInterface extends Application {
         button4.setMinSize(150,30);
         button2.setStyle("-fx-text-fill: purple;"+
                 "-fx-background-color: Grey;"+
-                "-fx-font-weight: italic;"+
-                "-fx-font-size: 25;");
+                "-fx-font: normal bold 25px 'Lucida Console';");
          button3.setStyle("-fx-text-fill: purple;"+
                  "-fx-background-color: Grey;"+
-                 "-fx-font-weight: italic;"+
-                 "-fx-font-size: 25;");
+                 "-fx-font: normal bold 25px 'Lucida Console';");
          button4.setStyle("-fx-text-fill: purple;"+
                  "-fx-background-color: Grey;"+
-                 "-fx-font-weight: italic;"+
-                 "-fx-font-size: 25;");
+                 "-fx-font: normal bold 25px 'Lucida Console';");
         HBox hbox = new HBox();
         hbox.getChildren().add(button2);
         hbox.getChildren().add(button3);
