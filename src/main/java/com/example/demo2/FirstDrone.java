@@ -19,6 +19,11 @@ public abstract class FirstDrone implements Serializable {
 
     public void drawdrone(MyCanvas mc) {
         mc.showdrone(x, y, rad);
+
+    }
+    public void drawhealth(MyCanvas mc) {
+        mc.healthbar(x, y, rad, 100);
+
     }
     public void drawdrone2(MyCanvas mc) {
         mc.showenemydrone(x, y, rad);

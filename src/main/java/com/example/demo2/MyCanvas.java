@@ -1,9 +1,7 @@
 package com.example.demo2;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 
@@ -46,14 +44,16 @@ public class MyCanvas {
         gc.clearRect(0, 0, xCanvasSize, yCanvasSize);        // clear canvas
     }
 
-public void healthbar(double x, double y, double health, double healthperc) {
+public void healthbar(double x, double y, double health, double healthbar) {
         if (health <= 10) {
             gc.setFill(Color.BROWN);
-            gc.rect(x - 50, y -50,100,10);
+            gc.fillRoundRect(x - 50, y - 50, 100, 10, 1,2);
         }
     if (health <= 100) {
         gc.setFill(Color.GREEN);
     }
+    gc.fillRoundRect(x-50,y-50, healthbar, 10, 1,1);
+    gc.fillText(String.format("%.of HP", health), x - 50, y -35);
 }
     public void showdrone(double x, double y, double rad) {
         Image droneimg;
